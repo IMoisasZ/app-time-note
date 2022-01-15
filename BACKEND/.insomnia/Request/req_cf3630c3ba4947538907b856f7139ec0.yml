@@ -1,0 +1,30 @@
+_id: req_cf3630c3ba4947538907b856f7139ec0
+type: Request
+parentId: fld_515eab6b80f745deb72bc6370438dec1
+modified: 1642087358145
+created: 1642087072989
+url: http://localhost:3001/typeReason
+name: /createTypeReason
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "retrabalho",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_7ba4548201ad474db054ea45d54c3ad7
+authentication: {}
+metaSortKey: -1642087072989
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

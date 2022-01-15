@@ -1,0 +1,31 @@
+_id: req_9a3b463a6bf649519e763db5dea54953
+type: Request
+parentId: fld_a9ecb7370caa4d3792d1a9a4a6ca43e5
+modified: 1642097168362
+created: 1642007900994
+url: http://localhost:3001/sector
+name: /updateSector
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"sector_id": 2,
+    	"name": "MODELAÇÃO",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d3d415360daf40659a951b372bb80b4e
+authentication: {}
+metaSortKey: -1642005731156.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

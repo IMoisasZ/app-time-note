@@ -1,0 +1,30 @@
+_id: req_67f1aa4df4b14d619396fa0ffc066c26
+type: Request
+parentId: fld_a9ecb7370caa4d3792d1a9a4a6ca43e5
+modified: 1642008155842
+created: 1642007831867
+url: http://localhost:3001/sector
+name: /createSector
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "modelação",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d3d415360daf40659a951b372bb80b4e
+authentication: {}
+metaSortKey: -1642007831867
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

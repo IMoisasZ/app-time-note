@@ -1,0 +1,32 @@
+_id: req_a60c6f167a2c47009ff5199d0d77b673
+type: Request
+parentId: fld_b741994772db4d25a56c7aec2a80e5c2
+modified: 1642097297388
+created: 1642097238262
+url: http://localhost:3001/placeWork
+name: /updatePlaceWork
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"place_work_id": 1,
+    	"place_work": "PROJETO",
+    	"sector_id": 1,
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f5f69af226f040cd8ab494bfbb70bd69
+authentication: {}
+metaSortKey: -1642094814618.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,31 @@
+_id: req_ff81603d368e4852ac438aec23cf500c
+type: Request
+parentId: fld_515eab6b80f745deb72bc6370438dec1
+modified: 1642087382218
+created: 1642087243090
+url: http://localhost:3001/typeReason
+name: /updateTypeReason
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"type_reason_id": 3,
+    	"name": "RETRABALHO",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_7ba4548201ad474db054ea45d54c3ad7
+authentication: {}
+metaSortKey: -1642050334663.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

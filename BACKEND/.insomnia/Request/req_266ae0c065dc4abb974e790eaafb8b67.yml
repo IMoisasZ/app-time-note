@@ -1,0 +1,45 @@
+_id: req_266ae0c065dc4abb974e790eaafb8b67
+type: Request
+parentId: fld_1996357b05824b0c8955461520bb2cc3
+modified: 1642016316603
+created: 1642013596338
+url: http://localhost:3001/di
+name: /createDi
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"di": 4700,
+    	"os": "",
+    	"op": "10",
+    	"order_number": "",
+    	"budget_number": "",
+    	"die_description": "",
+    	"die_number": "",
+    	"name_piece": "",
+    	"number_piece": "",
+    	"client_id": 1,
+    	"start": "",
+    	"deadline": "",
+    	"progress": "",
+    	"update_date": "",
+    	"typeDi_id": 1,
+    	"statusDi_id": 1,
+    	"delivery": ""
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d25e76b0817f4761b537455ddb179531
+authentication: {}
+metaSortKey: -1642013596338
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,31 @@
+_id: req_474767746bc6485195ab7a57e5b1eb49
+type: Request
+parentId: fld_e0b3659913ca4c37b8cb9fd9053a2ba4
+modified: 1642099679098
+created: 1642099637962
+url: http://localhost:3001/expedient
+name: /updateExpedient
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"expedient_id": 1,
+    	"expedient": "NORMAL",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d745b5a17c8b45ed88e24965a0406336
+authentication: {}
+metaSortKey: -1642098936271
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

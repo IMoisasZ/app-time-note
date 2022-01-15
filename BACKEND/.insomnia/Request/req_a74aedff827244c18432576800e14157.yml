@@ -1,0 +1,31 @@
+_id: req_a74aedff827244c18432576800e14157
+type: Request
+parentId: fld_3e5f2d30f3a947bc893b50f53cd2298d
+modified: 1642003849827
+created: 1642003801185
+url: http://localhost:3001/statusDi
+name: /statusDi
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"statusDi_id": 2,
+    	"status": "ENCERRADA",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f0ba1c8e2f964387aacf83f4d29ab174
+authentication: {}
+metaSortKey: -1641789125369.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

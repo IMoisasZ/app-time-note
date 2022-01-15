@@ -1,0 +1,46 @@
+_id: req_dd4f86ef9a604f85a88b02e27467eeb3
+type: Request
+parentId: fld_1996357b05824b0c8955461520bb2cc3
+modified: 1642016655742
+created: 1642016135460
+url: http://localhost:3001/di
+name: /updateDi
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"di_id": 1,
+    	"di": 4700,
+    	"os": "",
+    	"op": 10,
+    	"order_number": "",
+    	"budget_number": "",
+    	"die_description": "",
+    	"die_number": "",
+    	"name_piece": "",
+    	"number_piece": "",
+    	"client_id": 1,
+    	"start": "",
+    	"deadline": "",
+    	"progress": "",
+    	"update_date": "",
+    	"typeDi_id": 1,
+    	"statusDi_id": 1,
+    	"delivery": ""
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_d25e76b0817f4761b537455ddb179531
+authentication: {}
+metaSortKey: -1642012126787.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

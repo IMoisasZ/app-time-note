@@ -1,0 +1,30 @@
+_id: req_033358700617486ba991948ff49c96f3
+type: Request
+parentId: fld_aafaf29b544e4f77875325c2eac6d062
+modified: 1642002085770
+created: 1634648064403
+url: http://localhost:3001/client
+name: /cliente
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "moisas",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_8350c20dc063410684f4e85438d5850f
+authentication: {}
+metaSortKey: -1634648064403
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

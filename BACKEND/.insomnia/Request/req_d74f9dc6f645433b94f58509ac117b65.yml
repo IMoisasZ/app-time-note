@@ -1,0 +1,31 @@
+_id: req_d74f9dc6f645433b94f58509ac117b65
+type: Request
+parentId: fld_36e2850fc75045a9aea9ed98562aa40a
+modified: 1642092801091
+created: 1642092535733
+url: http://localhost:3001/descriptionReason
+name: /createDescriptionReason
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"code_reason_id": 1,
+    	"description_reason": "AUXÍLIO PROJETOS",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_adb942c9f4d44d8fbfbdbe763124533a
+authentication: {}
+metaSortKey: -1642092535733
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

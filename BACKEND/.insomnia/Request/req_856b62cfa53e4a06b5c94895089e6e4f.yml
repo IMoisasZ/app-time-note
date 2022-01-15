@@ -1,0 +1,30 @@
+_id: req_856b62cfa53e4a06b5c94895089e6e4f
+type: Request
+parentId: fld_4714ff8b3dbc42a0a392218e63293243
+modified: 1642011573216
+created: 1642010657237
+url: http://localhost:3001/typeDi
+name: /createTypeDi
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"name": "SERVICE",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_773202e6be2a4852977f32cfa6ea8096
+authentication: {}
+metaSortKey: -1642010657237
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

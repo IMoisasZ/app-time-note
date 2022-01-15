@@ -1,0 +1,42 @@
+_id: req_f3b8cfbb702b46d3bb7735fd0aa86216
+type: Request
+parentId: fld_3060364ad6e74a639c3a9a906aa3c55c
+modified: 1642177969897
+created: 1642102868875
+url: http://localhost:3001/projectNote
+name: /createProjectNote
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"date": "2022/01/13",
+    	"code_reason_id": 9,
+    	"description_reason_id": 1,
+    	"di_id": 1,
+    	"os_id": "",
+    	"task_description": "teste de apontamento",
+    	"place_work_id": 1,
+    	"operation_id": 1,
+    	"expedient_id": 1,
+    	"start": "2022/01/13 07:00:00",
+    	"pause": "2022/01/13 01:00:00",
+    	"finish": "2022/01/13 17:00:00",
+    	"notice": "testando",
+    	"note_status": "INCLUIDO"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f79bb3d089174e6585ff74f3ee2ee7c5
+authentication: {}
+metaSortKey: -1642102868875
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

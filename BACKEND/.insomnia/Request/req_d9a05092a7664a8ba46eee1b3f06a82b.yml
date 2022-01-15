@@ -1,0 +1,31 @@
+_id: req_d9a05092a7664a8ba46eee1b3f06a82b
+type: Request
+parentId: fld_b741994772db4d25a56c7aec2a80e5c2
+modified: 1642097193210
+created: 1642097093504
+url: http://localhost:3001/placeWork
+name: /createPlaceWork
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"place_work": "projeto",
+    	"sector_id": 1,
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f5f69af226f040cd8ab494bfbb70bd69
+authentication: {}
+metaSortKey: -1642097093504
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

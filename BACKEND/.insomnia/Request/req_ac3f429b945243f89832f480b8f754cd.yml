@@ -1,0 +1,30 @@
+_id: req_ac3f429b945243f89832f480b8f754cd
+type: Request
+parentId: fld_3e5f2d30f3a947bc893b50f53cd2298d
+modified: 1642003845455
+created: 1642003630446
+url: http://localhost:3001/statusDi
+name: /statusDi
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"status": "CANCELADA",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_f0ba1c8e2f964387aacf83f4d29ab174
+authentication: {}
+metaSortKey: -1642003630446
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

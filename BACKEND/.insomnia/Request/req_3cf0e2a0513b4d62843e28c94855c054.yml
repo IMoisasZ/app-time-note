@@ -1,0 +1,32 @@
+_id: req_3cf0e2a0513b4d62843e28c94855c054
+type: Request
+parentId: fld_e1534cd5c5b34b46adf68756636cf8c5
+modified: 1642091168698
+created: 1642088393787
+url: http://localhost:3001/codeReason
+name: /createCodeReason
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"code_reason": "J",
+    	"description_reason": "AUSENCIA (SEM ATESTADO) - DESCONTAR HORAS",
+    	"type_reason_id": 1,
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_ebf5577d8a7a4990b1ce32fe963dee32
+authentication: {}
+metaSortKey: -1642088393787
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

@@ -1,0 +1,33 @@
+_id: req_127dc2f6283d4448be1b3d6275b800a7
+type: Request
+parentId: fld_e1534cd5c5b34b46adf68756636cf8c5
+modified: 1642091201263
+created: 1642090989394
+url: http://localhost:3001/codeReason
+name: /updateCodeReason
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"code_reason_id": 2,
+    	"code_reason": "B",
+    	"description_reason": "VISITAS",
+    	"type_reason_id": 1,
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_ebf5577d8a7a4990b1ce32fe963dee32
+authentication: {}
+metaSortKey: -1642087733388
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

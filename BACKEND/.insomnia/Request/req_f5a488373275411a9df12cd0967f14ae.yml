@@ -1,0 +1,31 @@
+_id: req_f5a488373275411a9df12cd0967f14ae
+type: Request
+parentId: fld_9023318b95ac464a868a9e5c1d6c8c0c
+modified: 1642098564475
+created: 1642098425602
+url: http://localhost:3001/operation
+name: /updateOperation
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+    	"operation_id": 1,
+    	"operation": "SUPERFICIE",
+    	"actived": true
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_0cc3196f680e4b08ad14ccd4f5cef2e0
+authentication: {}
+metaSortKey: -1642097709655.5
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
