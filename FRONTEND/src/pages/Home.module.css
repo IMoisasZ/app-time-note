@@ -1,0 +1,25 @@
+.container_home {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.container_home Button {
+	margin: 4em;
+}
+
+.container_home span {
+	font-weight: bold;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	background-color: #4682b4;
+	/* border-radius: 1em; */
+	padding: 0.4em;
+	transition: 1s;
+}
+
+.container_home span:hover {
+	color: #fff;
+	cursor: pointer;
+}

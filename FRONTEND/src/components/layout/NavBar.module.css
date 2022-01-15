@@ -1,0 +1,13 @@
+.container_navbar {
+	height: 10vh;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	background-color: #4682b4;
+	margin-bottom: 2em;
+}
+
+.container_navbar img {
+	width: 80px;
+	margin-left: 5%;
+}

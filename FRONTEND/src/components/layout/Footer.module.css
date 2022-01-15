@@ -1,0 +1,16 @@
+.container_footer {
+	height: 10vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #4682b4;
+}
+
+.container_footer p {
+	font-family: 'Times New Roman', Times, serif;
+	color: #fff;
+}
+
+.container_footer span {
+	background-color: #4682b4;
+}

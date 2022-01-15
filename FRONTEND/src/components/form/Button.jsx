@@ -1,11 +1,6 @@
-import { BsPlayBtnFill } from 'react-icons/bs'
-
-function Button({ text = 'Name button' }) {
-	return (
-		<button>
-			<BsPlayBtnFill>{text}</BsPlayBtnFill>
-		</button>
-	)
+import styles from './Button.module.css'
+function Button({ children }) {
+	return <button className={styles.button}>{children}</button>
 }
 
 export default Button

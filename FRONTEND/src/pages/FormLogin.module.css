@@ -1,0 +1,26 @@
+.formLogin_container {
+	width: 30%;
+	margin: 1em auto 0 auto;
+	border: 0.5px solid #87cefa;
+	border-radius: 1em;
+	padding: 2em;
+	background-color: #87cefa;
+}
+
+.formLogin_container h2 {
+	text-align: center;
+	font-size: 2em;
+	color: #fff;
+}
+
+.formLogin_container label {
+	text-align: center;
+	font-size: 1.5em;
+	font-weight: 600;
+}
+
+.formLogin_container_btns {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}

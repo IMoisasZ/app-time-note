@@ -1,10 +1,10 @@
 import styles from './Input.module.css'
 function Input({
-	text = 'Name label',
-	name = 'Name input',
+	text = 'name label',
+	name = 'name input',
 	type = 'type input',
-	placeholder = 'Description action input',
-	readOnly = false,
+	value = 'value input',
+	placeholder = 'description input',
 	handleOnChange = null,
 }) {
 	return (
@@ -12,9 +12,10 @@ function Input({
 			<label htmlFor={name}>{text}</label>
 			<input
 				type={type}
-				placeholder={placeholder}
+				name={name}
 				id={name}
-				readOnly={readOnly}
+				value={value}
+				placeholder={placeholder}
 				onChange={handleOnChange}
 			/>
 		</div>
