@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import Input from '../components/form/Input'
 import Button from '../components/form/Button'
@@ -39,9 +40,11 @@ function FormLogin() {
 				value={password}
 				handleOnChange={handlePassword}
 			/>
-			<div className={styles.formLogin_container_btns}>
-				<Button>Login</Button>
-			</div>
+			<Link to='/apontamento'>
+				<div className={styles.formLogin_container_btns}>
+					<Button>Login</Button>
+				</div>
+			</Link>
 		</form>
 	)
 }
