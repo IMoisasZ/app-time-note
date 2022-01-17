@@ -1,5 +1,6 @@
 import express from 'express'
 import winston from 'winston'
+import cors from 'cors'
 
 // routes
 import ClientRoute from './src/routes/client.route.js'
@@ -22,6 +23,9 @@ const PORT = 3001
 
 // json
 app.use(express.json())
+
+//cors
+app.use(cors())
 
 // routes
 app.use('/client', ClientRoute)
