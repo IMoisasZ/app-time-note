@@ -15,17 +15,13 @@ function Select({
 				name={name}
 				onChange={handleOnChange}
 				readOnly={readOnly}
-				value={value}
-			>
-				{!options.length > 0 ? (
-					<option value=''>{textPadrao}</option>
-				) : (
-					options.map((option) => (
-						<option key={option.id} value={option.id}>
-							{option.name}
-						</option>
-					))
-				)}
+				value={value}>
+				<option value=' '>{textPadrao}</option>
+				{options.map((option) => (
+					<option key={option.id} value={option.id}>
+						{option.name}
+					</option>
+				))}
 			</Form.Select>
 		</>
 	)

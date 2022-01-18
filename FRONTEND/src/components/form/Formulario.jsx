@@ -30,11 +30,8 @@ function Formulario({
 				borderRadius,
 				padding,
 				backgroundColor,
-			}}
-		>
-			<Form.Group className='mb-3' controlId='formGroupEmail'>
-				{children}
-			</Form.Group>
+			}}>
+			<Form.Group className='mb-3'>{children}</Form.Group>
 		</Form>
 	)
 }

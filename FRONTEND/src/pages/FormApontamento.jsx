@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-import { Row } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 import Formulario from '../components/form/Formulario'
 import Input from '../components/form/Input'
 import Select from '../components/form/Select'
@@ -9,47 +9,119 @@ import { ready } from '../api/apiHttp'
 
 function FormApontamento() {
 	const [date, setDate] = useState('')
-	const [codigoMotivo, setCodigoMotivo] = useState('')
-	const [options, setOptions] = useState([])
+	const [codeReasonId, setCodeReasonId] = useState('')
+	const [descriptionReasonId, setDescriptionReasonId] = useState('')
 
+	const [codeReasonOptions, setCodeReasonOptions] = useState([])
+	const [descriptionReasonOptions, setDescriptionReasonOptions] = useState([])
+
+	// code_reason
 	useEffect(() => {
 		const allCodigoMotivo = async () => {
 			const options = await ready('codeReason')
+			const newOptions = []
+			options.map(({ code_reason_id, code_reason, description_reason }) => {
+				newOptions.push({
+					id: code_reason_id,
+					name: `${code_reason} - ${description_reason}`,
+				})
+			})
 
-			const newOptions = { ...options }
-
-			console.log(newOptions)
+			setCodeReasonOptions(newOptions)
 		}
 		allCodigoMotivo()
 	}, [])
+
+	// description_reason
+	useEffect(() => {
+		const allDescriptonReason = async () => {
+			const options = await ready('descriptionReason')
+			console.log(options)
+			const newOptions = []
+			options.map(
+				({
+					description_reason_id,
+					code_reason_id,
+					description_reason,
+					codeReason,
+				}) => {
+					if (code_reason_id === parseInt(codeReasonId)) {
+						newOptions.push({
+							id: description_reason_id,
+							id_code_reason: code_reason_id,
+							name: `${codeReason.code_reason} - ${description_reason}`,
+						})
+					}
+				},
+			)
+
+			setDescriptionReasonOptions(newOptions)
+		}
+		allDescriptonReason()
+	}, [codeReasonId])
+
 	const handleDate = (e) => {
 		setDate(e.currentTarget.value)
 	}
 
-	const handleCodigoMotivo = (e) => {
-		setCodigoMotivo(e.currentTarget.value)
+	const handleCodeReasonId = (e) => {
+		setCodeReasonId(e.currentTarget.value)
+	}
+
+	const handleDescriptionReasonId = (e) => {
+		setDescriptionReasonId(e.currentTarget.value)
+	}
+
+	const submit = (e) => {
+		e.preventDefault()
 	}
 
 	return (
 		<>
-			<Formulario>
-				<Row className='mb-3'>
-					<Input
-						text='Data'
-						type='date'
-						value={date}
-						handleOnChange={handleDate}
-					/>
-
-					<Select
-						text='Códgio motivo'
-						name='codigoMotivo'
-						value={codigoMotivo}
-						handleOnChange={handleCodigoMotivo}
-						textPadrao='Selecione um item'
-						options={options}
-						readOnly={true}
-					/>
+			<Formulario
+				name='name form'
+				handleOnSubit={submit}
+				display='flex'
+				justifyContent='center'
+				alignItens='center'
+				textAlign='center'
+				width='99%'
+				margin='0 auto'
+				border='1px solid black'
+				borderRadius='1em'
+				padding='1em'
+				backgroundColor='#566D7E'>
+				<Row className='vw-100'>
+					<Col xs={2}>
+						<Input
+							text='Data'
+							type='date'
+							value={date}
+							handleOnChange={handleDate}
+						/>
+					</Col>
+					<Col md={3}>
+						<Select
+							text='Códgio motivo'
+							name='codeReason'
+							value={codeReasonId}
+							handleOnChange={handleCodeReasonId}
+							textPadrao='Selecione um item'
+							options={codeReasonOptions}
+							readOnly={true}
+						/>
+					</Col>
+					<Col xxl={7}>
+						<Select
+							text='Descrição motivo'
+							name='descriptionReason'
+							value={descriptionReasonId}
+							handleOnChange={handleDescriptionReasonId}
+							textPadrao='Selecione um item'
+							options={descriptionReasonOptions}
+							readOnly={true}
+						/>
+					</Col>
 				</Row>
 			</Formulario>
 		</>
@@ -99,14 +171,6 @@ export default FormApontamento
 			<Button variant='primary' type='submit'>
 				Submit
 			</Button> */
-
-// 	<Select
-// 		text='Código Motivo:'
-// 		name='codigo_motivo'
-// 		value={codigoMotivo}
-// 		handleOnChange={handleCodigoMotivo}
-// 		options={handleCodigoMotivoOptions}
-// 	/>
 
 // 	<Select
 // 		text='Descrição Motivo:'
