@@ -4,6 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 import Formulario from '../components/form/Formulario'
 import Input from '../components/form/Input'
 import Select from '../components/form/Select'
+import TextArea from '../components/form/TextArea'
 
 import { ready } from '../api/apiHttp'
 
@@ -11,9 +12,15 @@ function FormApontamento() {
 	const [date, setDate] = useState('')
 	const [codeReasonId, setCodeReasonId] = useState('')
 	const [descriptionReasonId, setDescriptionReasonId] = useState('')
+	const [descriptionTask, setDescriptionTask] = useState('')
+	const [diId, setDiId] = useState('')
+	const [osId, setOsId] = useState('')
+	const [osDi, setOsDi] = useState({})
 
 	const [codeReasonOptions, setCodeReasonOptions] = useState([])
 	const [descriptionReasonOptions, setDescriptionReasonOptions] = useState([])
+	const [diOptions, setDiOptions] = useState([])
+	const [osOptions, setOsOptions] = useState([])
 
 	// code_reason
 	useEffect(() => {
@@ -21,7 +28,7 @@ function FormApontamento() {
 			const options = await ready('codeReason')
 			const newOptions = []
 			options.map(({ code_reason_id, code_reason, description_reason }) => {
-				newOptions.push({
+				return newOptions.push({
 					id: code_reason_id,
 					name: `${code_reason} - ${description_reason}`,
 				})
@@ -36,7 +43,6 @@ function FormApontamento() {
 	useEffect(() => {
 		const allDescriptonReason = async () => {
 			const options = await ready('descriptionReason')
-			console.log(options)
 			const newOptions = []
 			options.map(
 				({
@@ -52,13 +58,31 @@ function FormApontamento() {
 							name: `${codeReason.code_reason} - ${description_reason}`,
 						})
 					}
-				},
+					return true
+				}
 			)
 
 			setDescriptionReasonOptions(newOptions)
 		}
 		allDescriptonReason()
 	}, [codeReasonId])
+
+	// di
+	useEffect(() => {
+		const allDi = async () => {
+			const options = await ready('di')
+			const newOptions = []
+			options.map(({ di_id, di }) => {
+				return newOptions.push({
+					id: di_id,
+					name: di,
+				})
+			})
+			setDiOptions(newOptions)
+			setOsDi(options)
+		}
+		allDi()
+	}, [])
 
 	const handleDate = (e) => {
 		setDate(e.currentTarget.value)
@@ -72,10 +96,22 @@ function FormApontamento() {
 		setDescriptionReasonId(e.currentTarget.value)
 	}
 
+	const handleDescriptionTask = (e) => {
+		setDescriptionTask(e.currentTarget.value)
+	}
+
+	const handleDiId = (e) => {
+		setDiId(e.currentTarget.value)
+	}
+
+	const handleOsId = (e) => {
+		setOsId(e.currentTarget.value)
+	}
+
 	const submit = (e) => {
 		e.preventDefault()
 	}
-
+	console.log(osDi)
 	return (
 		<>
 			<Formulario
@@ -90,7 +126,8 @@ function FormApontamento() {
 				border='1px solid black'
 				borderRadius='1em'
 				padding='1em'
-				backgroundColor='#566D7E'>
+				backgroundColor='#566D7E'
+			>
 				<Row className='vw-100'>
 					<Col xs={2}>
 						<Input
@@ -121,6 +158,166 @@ function FormApontamento() {
 							options={descriptionReasonOptions}
 							readOnly={true}
 						/>
+					</Col>
+				</Row>
+				<Row>
+					<Col xs={3}>
+						<Row
+							style={{
+								display: 'flex',
+								justifyContent: 'center',
+								alignItems: 'center',
+								width: '100%',
+							}}
+						>
+							<Col xs={6}>
+								<Select
+									text='DI'
+									name='di'
+									value={diId}
+									handleOnChange={handleDiId}
+									textPadrao='...'
+									options={diOptions}
+									readOnly={true}
+								/>
+							</Col>
+							<Col xs={6}>
+								<Select
+									text='OS'
+									name='os'
+									value={osId}
+									handleOnChange={handleOsId}
+									textPadrao='...'
+									options={osOptions}
+									readOnly={true}
+								/>
+							</Col>
+						</Row>
+					</Col>
+
+					<Col xs={9}>
+						<Input
+							text='Descrição tarefa'
+							type='text'
+							value={descriptionTask}
+							placeholder='Descrição da tarefa'
+							handleOnChange={handleDescriptionTask}
+						/>
+					</Col>
+					{diId.length > 0 && (
+						<div
+							style={{
+								display: 'flex',
+								alignItems: 'center',
+								fontSize: '1em',
+								fontWeight: 'bold',
+								fontFamily: 'sans-serif',
+								color: 'blue',
+								marginTop: '0.5em',
+							}}
+						>
+							<p className='me-3'>OP: {osDi[0].op} | </p>
+							<p className='me-3'>Decrição: {osDi[0].die_description} | </p>
+							<p className='me-3'>Numero: {osDi[0].die_number} | </p>
+							<p className='me-3'>Nome Peça: {osDi[0].name_piece} | </p>
+							<p className='me-3'>Numero Peça: {osDi[0].number_piece} | </p>
+							<p className='me-3'>Cliente: {osDi[0].client.name} </p>
+						</div>
+					)}
+					{osId.length > 0 && (
+						<div
+							style={{
+								display: 'flex',
+								alignItems: 'center',
+								fontSize: '1em',
+								fontWeight: 'bold',
+								fontFamily: 'sans-serif',
+								color: 'blue',
+								marginTop: '0.5em',
+							}}
+						>
+							<p className='me-3'>Nome Ferramental: | </p>
+							<p className='me-3'>Numero Ferramenta: | </p>
+							<p className='me-3'>Nome Peça: | </p>
+							<p className='me-3'>Numero Peça: | </p>
+							<p className='me-3'>Cliente: | </p>
+						</div>
+					)}
+				</Row>
+				<Row>
+					<Col xs={2}>
+						<Select
+							text='Posto Trabalho'
+							name='os'
+							value={osId}
+							handleOnChange={handleOsId}
+							textPadrao='...'
+							options={osOptions}
+							readOnly={true}
+						/>
+					</Col>
+					<Col xs={4}>
+						<Select
+							text='Operação'
+							name='os'
+							value={osId}
+							handleOnChange={handleOsId}
+							textPadrao='...'
+							options={osOptions}
+							readOnly={true}
+						/>
+					</Col>
+					<Col xs={2}>
+						<Select
+							text='Expediente'
+							name='os'
+							value={osId}
+							handleOnChange={handleOsId}
+							textPadrao='...'
+							options={osOptions}
+							readOnly={true}
+						/>
+					</Col>
+					<Col xs={1}>
+						<Input
+							text='Inicio'
+							type='time'
+							value={descriptionTask}
+							placeholder='Descrição da tarefa'
+							handleOnChange={handleDescriptionTask}
+						/>
+					</Col>
+					<Col xs={1}>
+						<Input
+							text='Intervalo'
+							type='time'
+							value={descriptionTask}
+							placeholder='Descrição da tarefa'
+							handleOnChange={handleDescriptionTask}
+						/>
+					</Col>
+					<Col xs={1}>
+						<Input
+							text='Termino'
+							type='time'
+							value={descriptionTask}
+							placeholder='Descrição da tarefa'
+							handleOnChange={handleDescriptionTask}
+						/>
+					</Col>
+					<Col xs={1}>
+						<Input
+							text='Total'
+							type='text'
+							value={descriptionTask}
+							placeholder='Total geral'
+							handleOnChange={handleDescriptionTask}
+						/>
+					</Col>
+				</Row>
+				<Row>
+					<Col xs={12}>
+						<TextArea></TextArea>
 					</Col>
 				</Row>
 			</Formulario>
@@ -171,14 +368,6 @@ export default FormApontamento
 			<Button variant='primary' type='submit'>
 				Submit
 			</Button> */
-
-// 	<Select
-// 		text='Descrição Motivo:'
-// 		name='descricao_motivo'
-// 		value={descricaoMotivo}
-// 		handleOnChange={handleDescricaoMotivo}
-// 		options={handleDescricaoMotivoOptions}
-// 	/>
 
 // 	<Input
 // 		type='text'

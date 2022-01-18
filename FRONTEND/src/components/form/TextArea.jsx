@@ -1,4 +1,3 @@
-import styles from './TextArea.module.css'
 function TextArea({
 	name = 'name textarea',
 	text = 'name label',
@@ -9,7 +8,7 @@ function TextArea({
 	rows = '10',
 }) {
 	return (
-		<div className={styles.textArea}>
+		<div>
 			<label htmlFor={name}>{text}</label>
 			<textarea
 				name=''
@@ -17,7 +16,8 @@ function TextArea({
 				cols={cols}
 				rows={rows}
 				placeholder={placeholder}
-				onChange={handleOnchange}>
+				onChange={handleOnchange}
+			>
 				{props}
 			</textarea>
 		</div>
