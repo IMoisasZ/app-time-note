@@ -1,4 +1,4 @@
-import styles from './Input.module.css'
+import { Form } from 'react-bootstrap'
 function Input({
 	text = 'name label',
 	name = 'name input',
@@ -8,17 +8,18 @@ function Input({
 	handleOnChange = null,
 }) {
 	return (
-		<div className={styles.input}>
-			<label htmlFor={name}>{text}</label>
-			<input
+		<>
+			<Form.Label style={{ marginTop: '1em' }}>{text}</Form.Label>
+			<Form.Control
+				style={{ textAlign: 'center' }}
 				type={type}
 				name={name}
 				id={name}
-				value={value}
 				placeholder={placeholder}
+				value={value}
 				onChange={handleOnChange}
 			/>
-		</div>
+		</>
 	)
 }
 
