@@ -1,8 +1,0 @@
-.textArea {
-	display: flex;
-	flex-direction: column;
-}
-
-.textArea label {
-	margin-bottom: 2em;
-}

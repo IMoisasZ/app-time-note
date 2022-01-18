@@ -15,7 +15,10 @@ function FormApontamento() {
 	useEffect(() => {
 		const allCodigoMotivo = async () => {
 			const options = await ready('codeReason')
-			setOptions(options)
+
+			const newOptions = { ...options }
+
+			console.log(newOptions)
 		}
 		allCodigoMotivo()
 	}, [])
