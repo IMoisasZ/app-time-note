@@ -1,23 +1,33 @@
-import styles from './Select.module.css'
+import { Form } from 'react-bootstrap'
 function Select({
 	text = 'name label',
 	name = 'name select',
 	handleOnChange = null,
-	options = null,
+	value,
+	textPadrao = 'Selecione um item',
+	options,
 	readOnly = false,
 }) {
 	return (
-		<div className={styles.select}>
-			<label htmlFor={name}>{text}</label>
-			<select
+		<>
+			<Form.Label style={{ marginTop: '1em' }}>{text}</Form.Label>
+			<Form.Select
 				name={name}
-				id={name}
 				onChange={handleOnChange}
-				readOnly={readOnly}>
-				<option value=''>Selecione um item</option>
-				<option value=''>{options}</option>
-			</select>
-		</div>
+				readOnly={readOnly}
+				value={value}
+			>
+				{!options.length > 0 ? (
+					<option value=''>{textPadrao}</option>
+				) : (
+					options.map((option) => (
+						<option key={option.id} value={option.id}>
+							{option.name}
+						</option>
+					))
+				)}
+			</Form.Select>
+		</>
 	)
 }
 

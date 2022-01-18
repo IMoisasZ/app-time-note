@@ -1,6 +1,10 @@
-import styles from './Button.module.css'
-function Button({ children }) {
-	return <button className={styles.button}>{children}</button>
+import { Button } from 'react-bootstrap'
+function Btn({ children }) {
+	return (
+		<Button variant='primary' size='lg' style={{ marginTop: '2em' }}>
+			{children}
+		</Button>
+	)
 }
 
-export default Button
+export default Btn

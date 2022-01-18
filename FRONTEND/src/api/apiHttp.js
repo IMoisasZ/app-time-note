@@ -9,8 +9,8 @@ async function update(http, body) {
 	return await api.put(http, body)
 }
 
-export async function ready(http, params = undefined) {
-	const ready = await api.get(http, params)
+export async function ready(http) {
+	const ready = await api.get(http)
 	return ready.data
 }
 
