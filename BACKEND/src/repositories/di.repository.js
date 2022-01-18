@@ -1,11 +1,9 @@
 import DiModel from '../models/di.model.js'
-
+import ClientModel from '../models/client.model.js'
 
 async function createDi(di){
     try {
-        console.log(di);
         const newDi = await DiModel.create(di)
-        console.log(newDi);
         return await getDi(newDi.di_id)
     } catch (error) {
         throw error
@@ -27,7 +25,13 @@ async function updateDi(di){
 
 async function getAllDi(){
     try {
-        return await DiModel.findAll()
+        return await DiModel.findAll({
+            include: [
+                {
+                    model: ClientModel
+                }
+            ]
+        })
     } catch (error) {
         throw error
     }
