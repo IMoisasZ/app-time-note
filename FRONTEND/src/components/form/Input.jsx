@@ -6,6 +6,7 @@ function Input({
 	value = 'value input',
 	placeholder = 'description input',
 	handleOnChange = null,
+	disabled = false,
 }) {
 	return (
 		<>
@@ -18,6 +19,7 @@ function Input({
 				placeholder={placeholder}
 				value={value}
 				onChange={handleOnChange}
+				disabled={disabled}
 			/>
 		</>
 	)

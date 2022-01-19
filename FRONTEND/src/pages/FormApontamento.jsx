@@ -5,22 +5,46 @@ import Formulario from '../components/form/Formulario'
 import Input from '../components/form/Input'
 import Select from '../components/form/Select'
 import TextArea from '../components/form/TextArea'
+import Button from '../components/form/Button'
 
 import { ready } from '../api/apiHttp'
 
 function FormApontamento() {
-	const [date, setDate] = useState('')
+	const today = new Date()
+	const day = today.getDate().toString().padStart(2, '0')
+	const month = (today.getMonth() + 1).toString().padStart(2, '0')
+	const year = today.getFullYear()
+	const newToday = `${year}-${month}-${day}`
+	const [date, setDate] = useState(newToday)
 	const [codeReasonId, setCodeReasonId] = useState('')
+	const [disableCodeReasonId, setDisableCodeReasonId] = useState(false)
 	const [descriptionReasonId, setDescriptionReasonId] = useState('')
 	const [descriptionTask, setDescriptionTask] = useState('')
 	const [diId, setDiId] = useState('')
 	const [osId, setOsId] = useState('')
 	const [osDi, setOsDi] = useState({})
+	const [placeWorkId, setPlaceWorkId] = useState('')
+	const [operationId, setOperationId] = useState('')
+	const [expedientId, setExpedientId] = useState('')
+	const [notice, setNotice] = useState('')
+	const [start, setStart] = useState('')
+	const [pause, setPause] = useState('')
+	const [finish, setFinish] = useState('')
 
 	const [codeReasonOptions, setCodeReasonOptions] = useState([])
 	const [descriptionReasonOptions, setDescriptionReasonOptions] = useState([])
 	const [diOptions, setDiOptions] = useState([])
 	const [osOptions, setOsOptions] = useState([])
+	const [placeWorkOptions, setPlaceWorkOptions] = useState([])
+	const [operationOptions, setOperationOptions] = useState([])
+	const [expedientOptions, setExpedientOptions] = useState([])
+
+	const [disableDescriptionReasonId, setDisableDescriptionReasonId] = useState()
+	const [disableDi, setDisableDi] = useState(true)
+	const [disableOs, setDisableOs] = useState(true)
+	const [disablePlaceWork, setDisablePlaceWork] = useState(true)
+	const [disableOperation, setDisabledOperation] = useState(true)
+	const [disableExpedient, setDisableExpedient] = useState(true)
 
 	// code_reason
 	useEffect(() => {
@@ -42,6 +66,28 @@ function FormApontamento() {
 	// description_reason
 	useEffect(() => {
 		const allDescriptonReason = async () => {
+			// validation components
+			if (codeReasonId === 'Selecione um item' || codeReasonId === '') {
+				setDisableDescriptionReasonId(true)
+				setDescriptionReasonId('')
+				setDisableDi(true)
+				setDiId('')
+				setDisableOs(true)
+				setOsId('')
+				setDisablePlaceWork(true)
+				setPlaceWorkId('')
+				setDisabledOperation(true)
+				setOperationId('')
+				setDisableExpedient(true)
+				setExpedientId('')
+			} else {
+				setDisableDescriptionReasonId(false)
+				setDisableDi(false)
+				setDisableOs(false)
+				setDisablePlaceWork(false)
+				setDisabledOperation(false)
+				setDisableExpedient(false)
+			}
 			const options = await ready('descriptionReason')
 			const newOptions = []
 			options.map(
@@ -84,6 +130,54 @@ function FormApontamento() {
 		allDi()
 	}, [])
 
+	// place_work
+	useEffect(() => {
+		const allPlaceWork = async () => {
+			const options = await ready('placeWork')
+			const newOptions = []
+			options.map(({ place_work_id, place_work }) => {
+				return newOptions.push({
+					id: place_work_id,
+					name: place_work,
+				})
+			})
+			setPlaceWorkOptions(newOptions)
+		}
+		allPlaceWork()
+	}, [])
+
+	// operation
+	useEffect(() => {
+		const allOperations = async () => {
+			const options = await ready('operation')
+			const newOptions = []
+			options.map(({ operation_id, operation }) => {
+				return newOptions.push({
+					id: operation_id,
+					name: operation,
+				})
+			})
+			setOperationOptions(newOptions)
+		}
+		allOperations()
+	}, [])
+
+	// expedient
+	useEffect(() => {
+		const allExpedient = async () => {
+			const options = await ready('expedient')
+			const newOptions = []
+			options.map(({ expedient_id, expedient }) => {
+				return newOptions.push({
+					id: expedient_id,
+					name: expedient,
+				})
+			})
+			setExpedientOptions(newOptions)
+		}
+		allExpedient()
+	}, [])
+
 	const handleDate = (e) => {
 		setDate(e.currentTarget.value)
 	}
@@ -108,10 +202,37 @@ function FormApontamento() {
 		setOsId(e.currentTarget.value)
 	}
 
+	const handlePlaceWorkId = (e) => {
+		setPlaceWorkId(e.currentTarget.value)
+	}
+
+	const handleOperationId = (e) => {
+		setOperationId(e.currentTarget.value)
+	}
+
+	const handleExpedientId = (e) => {
+		setExpedientId(e.currentTarget.value)
+	}
+
+	const handleStart = (e) => {
+		setStart(e.currentTarget.value)
+	}
+
+	const handlePause = (e) => {
+		setPause(e.currentTarget.value)
+	}
+
+	const handleFinish = (e) => {
+		setFinish(e.currentTarget.value)
+	}
+
+	const handleNotice = (e) => {
+		setNotice(e.currentTarget.text)
+	}
+
 	const submit = (e) => {
 		e.preventDefault()
 	}
-	console.log(osDi)
 	return (
 		<>
 			<Formulario
@@ -128,6 +249,7 @@ function FormApontamento() {
 				padding='1em'
 				backgroundColor='#566D7E'
 			>
+				<h1>Apontamento de Horas</h1>
 				<Row className='vw-100'>
 					<Col xs={2}>
 						<Input
@@ -145,7 +267,7 @@ function FormApontamento() {
 							handleOnChange={handleCodeReasonId}
 							textPadrao='Selecione um item'
 							options={codeReasonOptions}
-							readOnly={true}
+							disabled={disableCodeReasonId}
 						/>
 					</Col>
 					<Col xxl={7}>
@@ -156,7 +278,7 @@ function FormApontamento() {
 							handleOnChange={handleDescriptionReasonId}
 							textPadrao='Selecione um item'
 							options={descriptionReasonOptions}
-							readOnly={true}
+							disabled={disableDescriptionReasonId}
 						/>
 					</Col>
 				</Row>
@@ -176,9 +298,9 @@ function FormApontamento() {
 									name='di'
 									value={diId}
 									handleOnChange={handleDiId}
-									textPadrao='...'
+									textPadrao='DI'
 									options={diOptions}
-									readOnly={true}
+									disabled={disableDi}
 								/>
 							</Col>
 							<Col xs={6}>
@@ -187,9 +309,9 @@ function FormApontamento() {
 									name='os'
 									value={osId}
 									handleOnChange={handleOsId}
-									textPadrao='...'
+									textPadrao='OS'
 									options={osOptions}
-									readOnly={true}
+									disabled={disableOs}
 								/>
 							</Col>
 						</Row>
@@ -248,61 +370,58 @@ function FormApontamento() {
 					<Col xs={2}>
 						<Select
 							text='Posto Trabalho'
-							name='os'
-							value={osId}
-							handleOnChange={handleOsId}
-							textPadrao='...'
-							options={osOptions}
-							readOnly={true}
+							name='placeWork'
+							value={placeWorkId}
+							handleOnChange={handlePlaceWorkId}
+							textPadrao='Selecione o posto de trabalho'
+							options={placeWorkOptions}
+							disabled={disablePlaceWork}
 						/>
 					</Col>
 					<Col xs={4}>
 						<Select
 							text='Operação'
-							name='os'
-							value={osId}
-							handleOnChange={handleOsId}
-							textPadrao='...'
-							options={osOptions}
-							readOnly={true}
+							name='operation'
+							value={operationId}
+							handleOnChange={handleOperationId}
+							textPadrao='Selecione a operação'
+							options={operationOptions}
+							disabled={disableOperation}
 						/>
 					</Col>
 					<Col xs={2}>
 						<Select
 							text='Expediente'
-							name='os'
-							value={osId}
-							handleOnChange={handleOsId}
-							textPadrao='...'
-							options={osOptions}
-							readOnly={true}
+							name='expedient'
+							value={expedientId}
+							handleOnChange={handleExpedientId}
+							textPadrao='Selecione o expediente'
+							options={expedientOptions}
+							disabled={disableExpedient}
 						/>
 					</Col>
 					<Col xs={1}>
 						<Input
 							text='Inicio'
 							type='time'
-							value={descriptionTask}
-							placeholder='Descrição da tarefa'
-							handleOnChange={handleDescriptionTask}
+							value={start}
+							handleOnChange={handleStart}
 						/>
 					</Col>
 					<Col xs={1}>
 						<Input
 							text='Intervalo'
 							type='time'
-							value={descriptionTask}
-							placeholder='Descrição da tarefa'
-							handleOnChange={handleDescriptionTask}
+							value={pause}
+							handleOnChange={handlePause}
 						/>
 					</Col>
 					<Col xs={1}>
 						<Input
 							text='Termino'
 							type='time'
-							value={descriptionTask}
-							placeholder='Descrição da tarefa'
-							handleOnChange={handleDescriptionTask}
+							value={finish}
+							handleOnChange={handleFinish}
 						/>
 					</Col>
 					<Col xs={1}>
@@ -312,153 +431,25 @@ function FormApontamento() {
 							value={descriptionTask}
 							placeholder='Total geral'
 							handleOnChange={handleDescriptionTask}
+							disabled={true}
 						/>
 					</Col>
 				</Row>
 				<Row>
-					<Col xs={12}>
-						<TextArea></TextArea>
+					<Col className='mt-3'>
+						<TextArea
+							text='Observação'
+							name='notice'
+							placeholder='Escreva a observação'
+							handleOnchange={handleNotice}
+						>
+							{notice}
+						</TextArea>
 					</Col>
 				</Row>
+				<Button handleOnClick={submit}>Incluir</Button>
 			</Formulario>
 		</>
 	)
 }
 export default FormApontamento
-
-/* <Input as={Col} controlId='formGridPassword'>
-					<Form.Label>Password</Form.Label>
-					<Form.Control type='password' placeholder='Password' />
-				</Input> */
-
-/* <Input className='mb-3' controlId='formGridAddress1'>
-				<Form.Label>Address</Form.Label>
-				<Form.Control placeholder='1234 Main St' />
-			</Input>
-
-			<Input className='mb-3' controlId='formGridAddress2'>
-				<Form.Label>Address 2</Form.Label>
-				<Form.Control placeholder='Apartment, studio, or floor' />
-			</Input>
-
-			<Row className='mb-3'>
-				<Input as={Col} controlId='formGridCity'>
-					<Form.Label>City</Form.Label>
-					<Form.Control />
-				</Input>
-
-				<Input as={Col} controlId='formGridState'>
-					<Form.Label>State</Form.Label>
-					<Form.Select defaultValue='Choose...'>
-						<option>Choose...</option>
-						<option>...</option>
-					</Form.Select>
-				</Input>
-
-				<Input as={Col} controlId='formGridZip'>
-					<Form.Label>Zip</Form.Label>
-					<Form.Control />
-				</Input>
-			</Row>
-
-			<Input className='mb-3' id='formGridCheckbox'>
-				<Form.Check type='checkbox' label='Check me out' />
-			</Input>
-
-			<Button variant='primary' type='submit'>
-				Submit
-			</Button> */
-
-// 	<Input
-// 		type='text'
-// 		text='Descrição da tarefa:'
-// 		name='descricao_tarefa'
-// 		placeholder='Descrição da tarefa'
-// 		value={descricaoTarefa}
-// 		handleOnChange={handleDescricaoTarefa}
-// 		readyOnly={true}
-// 	/>
-
-// 	<Select
-// 		text='DI:'
-// 		name='di'
-// 		value={di}
-// 		handleOnChange={handleDi}
-// 		options={handleDiOptions}
-// 	/>
-// 	<Select
-// 		text='OS:'
-// 		name='os'
-// 		value={os}
-// 		handleOnChange={handleOs}
-// 		options={handleOsOptions}
-// 	/>
-// 	<ul>
-// 		<li>OP:</li>
-// 		<li>Descrição:</li>
-// 		<li>Numero:</li>
-// 		<li>Nome Peça:</li>
-// 		<li>Numero Peça:</li>
-// 		<li>Cliente:</li>
-// 	</ul>
-
-// 	<Select
-// 		text='Posto trabalho:'
-// 		name='posto_trabalho'
-// 		value={postoTrabalho}
-// 		handleOnChange={handlePostoTrabalho}
-// 		options={handlePostoTrabalhoOptions}
-// 	/>
-// 	<Select
-// 		text='Operação:'
-// 		name='operacao'
-// 		value={operacao}
-// 		handleOnChange={handleOperacao}
-// 		options={handleOperacaoOptions}
-// 	/>
-// 	<Select
-// 		text='Expediente:'
-// 		name='expediente'
-// 		value={expediente}
-// 		handleOnChange={handleExpediente}
-// 		options={handleExpedienteOptions}
-// 	/>
-// 	<Input
-// 		type='time'
-// 		text='Inicio:'
-// 		name='inicio'
-// 		placeholder='Hora inicio'
-// 		value={inicio}
-// 		handleOnChange={handleInicio}
-// 		readyOnly={true}
-// 	/>
-// 	<Input
-// 		type='time'
-// 		text='Intervalo:'
-// 		name='intervalo'
-// 		placeholder='Hora intervalo'
-// 		value={intervalo}
-// 		handleOnChange={handleIntervalo}
-// 		readyOnly={true}
-// 	/>
-// 	<Input
-// 		type='time'
-// 		text='Termino:'
-// 		name='termino'
-// 		placeholder='Hora termino'
-// 		value={termino}
-// 		handleOnChange={handleTermino}
-// 		readyOnly={true}
-// 	/>
-// 	<span>Total</span>
-// 	<p>_______________</p>
-// 	<TextArea
-// 		text='Observação:'
-// 		name='observacao'
-// 		cols='30'
-// 		rows='14'
-// 		placeholde='Observação'
-// 		onChange={handleTextAreaOnchang}
-// 	></TextArea>
-// 	<Button>Incluir</Button>
-// </form>

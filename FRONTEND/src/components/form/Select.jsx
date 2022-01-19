@@ -4,9 +4,10 @@ function Select({
 	name = 'name select',
 	handleOnChange = null,
 	value,
-	textPadrao = 'Selecione um item',
+	textPadrao = 'text padrao',
 	options,
-	readOnly = false,
+	disabled = true,
+	placeholder = 'placeholder',
 }) {
 	return (
 		<>
@@ -15,10 +16,11 @@ function Select({
 				style={{ textAlign: 'center' }}
 				name={name}
 				onChange={handleOnChange}
-				readOnly={readOnly}
+				disabled={disabled}
 				value={value}
+				placeholder={placeholder}
 			>
-				<option value=' '>{textPadrao}</option>
+				<option>{textPadrao}</option>
 				{options.map((option) => (
 					<option key={option.id} value={option.id}>
 						{option.name}
