@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Row, Col } from 'react-bootstrap'
 import Formulario from '../components/form/Formulario'
@@ -30,6 +31,8 @@ function FormApontamento() {
 	const [start, setStart] = useState('')
 	const [pause, setPause] = useState('')
 	const [finish, setFinish] = useState('')
+	const [totalPrior, setTotalPrior] = useState(0)
+	const [total, setTotal] = useState(0)
 
 	const [codeReasonOptions, setCodeReasonOptions] = useState([])
 	const [descriptionReasonOptions, setDescriptionReasonOptions] = useState([])
@@ -67,27 +70,8 @@ function FormApontamento() {
 	useEffect(() => {
 		const allDescriptonReason = async () => {
 			// validation components
-			if (codeReasonId === 'Selecione um item' || codeReasonId === '') {
-				setDisableDescriptionReasonId(true)
-				setDescriptionReasonId('')
-				setDisableDi(true)
-				setDiId('')
-				setDisableOs(true)
-				setOsId('')
-				setDisablePlaceWork(true)
-				setPlaceWorkId('')
-				setDisabledOperation(true)
-				setOperationId('')
-				setDisableExpedient(true)
-				setExpedientId('')
-			} else {
-				setDisableDescriptionReasonId(false)
-				setDisableDi(false)
-				setDisableOs(false)
-				setDisablePlaceWork(false)
-				setDisabledOperation(false)
-				setDisableExpedient(false)
-			}
+			validateComponents()
+
 			const options = await ready('descriptionReason')
 			const newOptions = []
 			options.map(
@@ -105,7 +89,7 @@ function FormApontamento() {
 						})
 					}
 					return true
-				}
+				},
 			)
 
 			setDescriptionReasonOptions(newOptions)
@@ -178,6 +162,28 @@ function FormApontamento() {
 		allExpedient()
 	}, [])
 
+	// total
+	useEffect(() => {
+		const handleTotal = () => {
+			const newStart = start.split(':')
+			const newPause = pause.split(':')
+			const newFinish = finish.split(':')
+
+			const int =
+				parseFloat(newFinish[0]) -
+				parseFloat(newStart[0]) -
+				parseFloat(newPause[0])
+			const rest =
+				(parseFloat(newFinish[1]) -
+					parseFloat(newStart[1]) -
+					parseFloat(newPause[1])) /
+				60
+			const totalGeral = int + rest
+			setTotal(totalGeral)
+		}
+		handleTotal()
+	}, [totalPrior])
+
 	const handleDate = (e) => {
 		setDate(e.currentTarget.value)
 	}
@@ -216,18 +222,85 @@ function FormApontamento() {
 
 	const handleStart = (e) => {
 		setStart(e.currentTarget.value)
+		setTotalPrior(e.currentTarget.value)
 	}
 
 	const handlePause = (e) => {
 		setPause(e.currentTarget.value)
+		setTotalPrior(e.currentTarget.value)
 	}
 
 	const handleFinish = (e) => {
 		setFinish(e.currentTarget.value)
+		setTotalPrior(e.currentTarget.value)
 	}
 
 	const handleNotice = (e) => {
-		setNotice(e.currentTarget.text)
+		setNotice(e.currentTarget.value)
+	}
+
+	const validateComponents = () => {
+		if (codeReasonId === 'Selecione um item' || codeReasonId === '') {
+			setDisableDescriptionReasonId(true)
+			setDisableDi(true)
+			setDisableOs(true)
+			setDisablePlaceWork(true)
+			setDisabledOperation(true)
+			setDisableExpedient(true)
+			clear()
+		} else {
+			switch (codeReasonId) {
+				case '1':
+				case '5':
+				case '6':
+				case '9':
+					setDisableDescriptionReasonId(false)
+					setDisableDi(false)
+					setDisableOs(false)
+					setDisablePlaceWork(false)
+					setDisabledOperation(false)
+					setDisableExpedient(false)
+					break
+				case '2':
+				case '3':
+				case '4':
+				case '7':
+				case '8':
+					setDisableDescriptionReasonId(false)
+					setDisableDi(true)
+					setDisableOs(true)
+					setDisablePlaceWork(false)
+					setDisabledOperation(true)
+					setDisableExpedient(false)
+					break
+				case '10':
+					setDisableDescriptionReasonId(false)
+					setDisableDi(true)
+					setDisableOs(true)
+					setDisablePlaceWork(true)
+					setDisabledOperation(true)
+					setDisableExpedient(false)
+					expedientId(3)
+					break
+			}
+		}
+	}
+
+	function clear() {
+		setDate(newToday)
+		setCodeReasonId('')
+		setDescriptionReasonId('')
+		setDiId('')
+		setOsId('')
+		setDescriptionTask('')
+		setPlaceWorkId('')
+		setOperationId('')
+		setExpedientId('')
+		setStart('')
+		setPause('')
+		setFinish('')
+		setNotice('')
+		setTotal('')
 	}
 
 	const submit = (e) => {
@@ -247,10 +320,9 @@ function FormApontamento() {
 				border='1px solid black'
 				borderRadius='1em'
 				padding='1em'
-				backgroundColor='#566D7E'
-			>
-				<h1>Apontamento de Horas</h1>
-				<Row className='vw-100'>
+				backgroundColor='#566D7E'>
+				<h1 style={{ marginBottom: 0 }}>Apontamento de Horas</h1>
+				<Row>
 					<Col xs={2}>
 						<Input
 							text='Data'
@@ -290,8 +362,7 @@ function FormApontamento() {
 								justifyContent: 'center',
 								alignItems: 'center',
 								width: '100%',
-							}}
-						>
+							}}>
 							<Col xs={6}>
 								<Select
 									text='DI'
@@ -336,8 +407,7 @@ function FormApontamento() {
 								fontFamily: 'sans-serif',
 								color: 'blue',
 								marginTop: '0.5em',
-							}}
-						>
+							}}>
 							<p className='me-3'>OP: {osDi[0].op} | </p>
 							<p className='me-3'>Decrição: {osDi[0].die_description} | </p>
 							<p className='me-3'>Numero: {osDi[0].die_number} | </p>
@@ -356,8 +426,7 @@ function FormApontamento() {
 								fontFamily: 'sans-serif',
 								color: 'blue',
 								marginTop: '0.5em',
-							}}
-						>
+							}}>
 							<p className='me-3'>Nome Ferramental: | </p>
 							<p className='me-3'>Numero Ferramenta: | </p>
 							<p className='me-3'>Nome Peça: | </p>
@@ -367,7 +436,7 @@ function FormApontamento() {
 					)}
 				</Row>
 				<Row>
-					<Col xs={2}>
+					<Col xs={3}>
 						<Select
 							text='Posto Trabalho'
 							name='placeWork'
@@ -378,7 +447,7 @@ function FormApontamento() {
 							disabled={disablePlaceWork}
 						/>
 					</Col>
-					<Col xs={4}>
+					<Col xs={6}>
 						<Select
 							text='Operação'
 							name='operation'
@@ -400,15 +469,27 @@ function FormApontamento() {
 							disabled={disableExpedient}
 						/>
 					</Col>
-					<Col xs={1}>
+				</Row>
+				<Row>
+					<Col xs={4}>
+						<TextArea
+							text='Observação'
+							name='notice'
+							placeholder='Escreva a observação'
+							handleOnchange={handleNotice}
+							value={notice}
+						/>
+					</Col>
+					<Col xs={2}>
 						<Input
+							style={{ fontSize: '0.5em' }}
 							text='Inicio'
 							type='time'
 							value={start}
 							handleOnChange={handleStart}
 						/>
 					</Col>
-					<Col xs={1}>
+					<Col xs={2}>
 						<Input
 							text='Intervalo'
 							type='time'
@@ -416,7 +497,7 @@ function FormApontamento() {
 							handleOnChange={handlePause}
 						/>
 					</Col>
-					<Col xs={1}>
+					<Col xs={2}>
 						<Input
 							text='Termino'
 							type='time'
@@ -424,30 +505,25 @@ function FormApontamento() {
 							handleOnChange={handleFinish}
 						/>
 					</Col>
-					<Col xs={1}>
+					<Col xs={2}>
 						<Input
 							text='Total'
 							type='text'
-							value={descriptionTask}
+							value={total ? total : ''}
 							placeholder='Total geral'
-							handleOnChange={handleDescriptionTask}
 							disabled={true}
 						/>
 					</Col>
 				</Row>
-				<Row>
-					<Col className='mt-3'>
-						<TextArea
-							text='Observação'
-							name='notice'
-							placeholder='Escreva a observação'
-							handleOnchange={handleNotice}
-						>
-							{notice}
-						</TextArea>
-					</Col>
-				</Row>
-				<Button handleOnClick={submit}>Incluir</Button>
+				<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+					<Button variant='warning' handleOnClick={clear}>
+						Limpar campos
+					</Button>
+					<Button handleOnClick={submit}>Incluir</Button>
+					<Link to='/lista_apontamentos'>
+						<Button variant='secondary'>Lista apontamentos</Button>
+					</Link>
+				</div>
 			</Formulario>
 		</>
 	)

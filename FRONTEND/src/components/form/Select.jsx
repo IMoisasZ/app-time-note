@@ -11,15 +11,14 @@ function Select({
 }) {
 	return (
 		<>
-			<Form.Label style={{ marginTop: '1em' }}>{text}</Form.Label>
+			<Form.Label style={{ marginTop: '0.5em' }}>{text}</Form.Label>
 			<Form.Select
 				style={{ textAlign: 'center' }}
 				name={name}
 				onChange={handleOnChange}
 				disabled={disabled}
 				value={value}
-				placeholder={placeholder}
-			>
+				placeholder={placeholder}>
 				<option>{textPadrao}</option>
 				{options.map((option) => (
 					<option key={option.id} value={option.id}>

@@ -8,7 +8,7 @@ function Formulario({
 	justifyContent = 'center',
 	alignItens = 'center',
 	textAlign = 'center',
-	width = '40%',
+	width = '80%',
 	margin = '0 auto',
 	border = '1px solid black',
 	borderRadius = '1em',
@@ -32,9 +32,8 @@ function Formulario({
 				backgroundColor,
 				color: 'white',
 				fontWeight: 'bold',
-			}}
-		>
-			<Form.Group className='mb-3'>{children}</Form.Group>
+			}}>
+			<Form.Group className='vw-100'>{children}</Form.Group>
 		</Form>
 	)
 }

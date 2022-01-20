@@ -10,7 +10,7 @@ function Input({
 }) {
 	return (
 		<>
-			<Form.Label style={{ marginTop: '1em' }}>{text}</Form.Label>
+			<Form.Label style={{ marginTop: '0.5em' }}>{text}</Form.Label>
 			<Form.Control
 				style={{ textAlign: 'center' }}
 				type={type}
