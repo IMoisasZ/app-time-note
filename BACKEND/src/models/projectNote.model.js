@@ -29,7 +29,7 @@ const ProjectNote = db.define(
 		},
 		di_id: {
 			type: Sequelize.INTEGER,
-			allowNull: false,
+			allowNull: true,
 		},
 		os_id: {
 			type: Sequelize.INTEGER,

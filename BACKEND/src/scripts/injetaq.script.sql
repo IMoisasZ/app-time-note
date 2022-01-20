@@ -1,7 +1,6 @@
 create database injetaq;
 
 use injetaq;
-
 create table usuario (
 	usuario_id int auto_increment primary key,
     nome varchar(50) not null,
@@ -177,7 +176,7 @@ create table project_note (
     foreign key(code_reason_id) references code_reason(code_reason_id),
     description_reason_id int not null,
     foreign key(description_reason_id) references description_reason(description_reason_id),
-    di_id int not null,
+    di_id int,
     foreign key(di_id) references di(di_id),
     os_id int,
     task_description varchar(255),
