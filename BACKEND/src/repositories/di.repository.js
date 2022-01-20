@@ -39,7 +39,13 @@ async function getAllDi(){
 
 async function getDi(di_id){
     try {
-        return await DiModel.findByPk(di_id)
+        return await DiModel.findByPk(di_id, {
+            include: [
+                {
+                    model: ClientModel
+                }
+            ]
+        })
     } catch (error) {
         throw error
     }
