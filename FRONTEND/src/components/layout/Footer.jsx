@@ -1,7 +1,14 @@
-import styles from './Footer.module.css'
 function Footer() {
 	return (
-		<footer className={styles.container_footer}>
+		<footer
+			style={{
+				backgroundColor: '#4682b4',
+				margin: '0',
+				color: 'white',
+				textAlign: 'center',
+				fontWeight: '500',
+			}}
+		>
 			<div>
 				<p>Injetaq Indústria e Comércio Ltda &copy;</p>
 				<p>Problemas? ligue no ramal 5621</p>

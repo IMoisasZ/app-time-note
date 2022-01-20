@@ -4,7 +4,7 @@ import FormLogin from './FormLogin'
 
 function Login() {
 	return (
-		<Container>
+		<Container margin='0 auto'>
 			<FormLogin />
 		</Container>
 	)

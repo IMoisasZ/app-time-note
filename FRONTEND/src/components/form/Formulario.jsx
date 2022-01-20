@@ -32,7 +32,8 @@ function Formulario({
 				backgroundColor,
 				color: 'white',
 				fontWeight: 'bold',
-			}}>
+			}}
+		>
 			<Form.Group className='vw-100'>{children}</Form.Group>
 		</Form>
 	)

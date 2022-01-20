@@ -18,8 +18,9 @@ function Select({
 				onChange={handleOnChange}
 				disabled={disabled}
 				value={value}
-				placeholder={placeholder}>
-				<option>{textPadrao}</option>
+				placeholder={placeholder}
+			>
+				<option value=''>{textPadrao}</option>
 				{options.map((option) => (
 					<option key={option.id} value={option.id}>
 						{option.name}

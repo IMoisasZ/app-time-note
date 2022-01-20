@@ -1,11 +1,11 @@
 import api from './api'
 
-async function create(http, body) {
+export async function create(http, body) {
 	const create = await api.post(http, body)
 	return create
 }
 
-async function update(http, body) {
+export async function update(http, body) {
 	return await api.put(http, body)
 }
 
@@ -14,6 +14,6 @@ export async function ready(http) {
 	return ready.data
 }
 
-async function remove(http, params) {
+export async function remove(http, params) {
 	return await api.delete(http, params)
 }

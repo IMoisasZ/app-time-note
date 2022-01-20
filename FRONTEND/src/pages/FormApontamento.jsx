@@ -7,8 +7,10 @@ import Input from '../components/form/Input'
 import Select from '../components/form/Select'
 import TextArea from '../components/form/TextArea'
 import Button from '../components/form/Button'
+import Message from '../components/layout/Message'
 
 import { ready } from '../api/apiHttp'
+import { create } from '../api/apiHttp'
 
 function FormApontamento() {
 	const today = new Date()
@@ -27,12 +29,13 @@ function FormApontamento() {
 	const [placeWorkId, setPlaceWorkId] = useState('')
 	const [operationId, setOperationId] = useState('')
 	const [expedientId, setExpedientId] = useState('')
-	const [notice, setNotice] = useState('')
 	const [start, setStart] = useState('')
 	const [pause, setPause] = useState('')
 	const [finish, setFinish] = useState('')
+	const [notice, setNotice] = useState('')
 	const [totalPrior, setTotalPrior] = useState(0)
 	const [total, setTotal] = useState(0)
+	const [message, setMessage] = useState([])
 
 	const [codeReasonOptions, setCodeReasonOptions] = useState([])
 	const [descriptionReasonOptions, setDescriptionReasonOptions] = useState([])
@@ -89,7 +92,7 @@ function FormApontamento() {
 						})
 					}
 					return true
-				},
+				}
 			)
 
 			setDescriptionReasonOptions(newOptions)
@@ -109,7 +112,6 @@ function FormApontamento() {
 				})
 			})
 			setDiOptions(newOptions)
-			setOsDi(options)
 		}
 		allDi()
 	}, [])
@@ -189,6 +191,7 @@ function FormApontamento() {
 	}
 
 	const handleCodeReasonId = (e) => {
+		clear()
 		setCodeReasonId(e.currentTarget.value)
 	}
 
@@ -200,8 +203,19 @@ function FormApontamento() {
 		setDescriptionTask(e.currentTarget.value)
 	}
 
-	const handleDiId = (e) => {
-		setDiId(e.currentTarget.value)
+	const handleDiId = async (e) => {
+		const di = e.currentTarget.value
+		setDiId(di)
+		const diSelected = await ready(`di/${di}`)
+		const newData = {
+			op: diSelected.op,
+			descricao: diSelected.die_description,
+			numero: diSelected.die_number,
+			nomePeca: diSelected.name_piece,
+			numeroPeca: diSelected.number_piece,
+			cliente: diSelected.client.name,
+		}
+		setOsDi(newData)
 	}
 
 	const handleOsId = (e) => {
@@ -282,6 +296,14 @@ function FormApontamento() {
 					setDisableExpedient(false)
 					expedientId(3)
 					break
+				default:
+					setDisableDescriptionReasonId(true)
+					setDisableDi(true)
+					setDisableOs(true)
+					setDisablePlaceWork(true)
+					setDisabledOperation(true)
+					setDisableExpedient(true)
+					clear()
 			}
 		}
 	}
@@ -301,10 +323,36 @@ function FormApontamento() {
 		setFinish('')
 		setNotice('')
 		setTotal('')
+		setMessage([])
 	}
 
-	const submit = (e) => {
+	console.log(codeReasonId)
+
+	const submit = async (e) => {
 		e.preventDefault()
+		const note = {
+			date: date,
+			code_reason_id: codeReasonId,
+			description_reason_id: descriptionReasonId,
+			di_id: diId,
+			os_id: osId,
+			task_description: descriptionTask,
+			placeWork_id: placeWorkId,
+			operation_id: operationId,
+			expedient_id: expedientId,
+			start,
+			pause,
+			finish,
+			notice,
+			note_status: 'INCLUÍDO',
+		}
+		try {
+			await create('projectNote', note)
+			setMessage(['success', 'Apontamento incluído com sucesso'])
+		} catch (error) {
+			setMessage(['error', error.response.data.erros])
+			console.log(note)
+		}
 	}
 	return (
 		<>
@@ -315,12 +363,13 @@ function FormApontamento() {
 				justifyContent='center'
 				alignItens='center'
 				textAlign='center'
-				width='99%'
-				margin='0 auto'
+				width='100%'
+				margin='auto'
 				border='1px solid black'
 				borderRadius='1em'
 				padding='1em'
-				backgroundColor='#566D7E'>
+				backgroundColor='#566D7E'
+			>
 				<h1 style={{ marginBottom: 0 }}>Apontamento de Horas</h1>
 				<Row>
 					<Col xs={2}>
@@ -362,7 +411,8 @@ function FormApontamento() {
 								justifyContent: 'center',
 								alignItems: 'center',
 								width: '100%',
-							}}>
+							}}
+						>
 							<Col xs={6}>
 								<Select
 									text='DI'
@@ -407,31 +457,29 @@ function FormApontamento() {
 								fontFamily: 'sans-serif',
 								color: 'blue',
 								marginTop: '0.5em',
-							}}>
-							<p className='me-3'>OP: {osDi[0].op} | </p>
-							<p className='me-3'>Decrição: {osDi[0].die_description} | </p>
-							<p className='me-3'>Numero: {osDi[0].die_number} | </p>
-							<p className='me-3'>Nome Peça: {osDi[0].name_piece} | </p>
-							<p className='me-3'>Numero Peça: {osDi[0].number_piece} | </p>
-							<p className='me-3'>Cliente: {osDi[0].client.name} </p>
-						</div>
-					)}
-					{osId.length > 0 && (
-						<div
-							style={{
-								display: 'flex',
-								alignItems: 'center',
-								fontSize: '1em',
-								fontWeight: 'bold',
-								fontFamily: 'sans-serif',
-								color: 'blue',
-								marginTop: '0.5em',
-							}}>
-							<p className='me-3'>Nome Ferramental: | </p>
-							<p className='me-3'>Numero Ferramenta: | </p>
-							<p className='me-3'>Nome Peça: | </p>
-							<p className='me-3'>Numero Peça: | </p>
-							<p className='me-3'>Cliente: | </p>
+							}}
+						>
+							<p className='me-3'>
+								OP: <span style={{ color: 'orange' }}>{osDi.op}</span> |{' '}
+							</p>
+							<p className='me-3'>
+								Decrição:{' '}
+								<span style={{ color: 'orange' }}>{osDi.descricao}</span> |{' '}
+							</p>
+							<p className='me-3'>
+								Numero: <span style={{ color: 'orange' }}>{osDi.numero}</span> |{' '}
+							</p>
+							<p className='me-3'>
+								Nome Peça:{' '}
+								<span style={{ color: 'orange' }}>{osDi.nomePeca}</span> |{' '}
+							</p>
+							<p className='me-3'>
+								Numero Peça:{' '}
+								<span style={{ color: 'orange' }}>{osDi.numeroPeca}</span> |{' '}
+							</p>
+							<p className='me-3'>
+								Cliente: <span style={{ color: 'orange' }}>{osDi.cliente}</span>{' '}
+							</p>
 						</div>
 					)}
 				</Row>
@@ -524,6 +572,7 @@ function FormApontamento() {
 						<Button variant='secondary'>Lista apontamentos</Button>
 					</Link>
 				</div>
+				{message && <Message type={message[0]} message={message[1]} />}
 			</Formulario>
 		</>
 	)

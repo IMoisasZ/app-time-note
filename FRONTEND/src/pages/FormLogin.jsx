@@ -25,7 +25,7 @@ function FormLogin() {
 
 	return (
 		<div>
-			<Formulario handleOnSubit={submit}>
+			<Formulario handleOnSubit={submit} width='20%'>
 				<h1>Login</h1>
 				<Input
 					type='text'

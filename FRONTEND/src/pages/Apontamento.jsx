@@ -2,7 +2,7 @@ import Container from '../components/layout/Container'
 import FormApontamento from './FormApontamento'
 function Apontamento() {
 	return (
-		<Container>
+		<Container maxWidth='100%' margin='0'>
 			<FormApontamento />
 		</Container>
 	)
