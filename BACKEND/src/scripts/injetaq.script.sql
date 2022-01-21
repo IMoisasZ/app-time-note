@@ -1,14 +1,22 @@
 create database injetaq;
 
 use injetaq;
-create table usuario (
-	usuario_id int auto_increment primary key,
-    nome varchar(50) not null,
+create table sector (
+	sector_id int auto_increment primary key,
+    name varchar(50) not null,
+    actived boolean default true,
+    createdAt datetime,
+    updatedAt datetime
+);
+
+create table user (
+	user_id int auto_increment primary key,
+    name varchar(50) not null,
     email varchar(50) not null unique,
-    senha varchar(20) not null,
-    setor_id int not null,
-    foreign key (setor_id) references setor(setor_id),
-    ativo boolean default true,
+    password varchar(20) not null,
+    sector_id int not null,
+    foreign key (sector_id) references sector(sector_id),
+    actived boolean default true,
     createdAt datetime,
     updatedAt datetime
 );
@@ -24,14 +32,6 @@ create table client (
 create table statusDi (
 	statusDi_id int primary key auto_increment,
     status varchar(15) not null,
-    actived boolean default true,
-    createdAt datetime,
-    updatedAt datetime
-);
-
-create table sector (
-	sector_id int auto_increment primary key,
-    name varchar(50) not null,
     actived boolean default true,
     createdAt datetime,
     updatedAt datetime
