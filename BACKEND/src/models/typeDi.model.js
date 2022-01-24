@@ -2,7 +2,7 @@ import Sequelize from 'sequelize'
 import db from '../connectionDb/db.ConnectionDb.js'
 
 const TypeDi = db.define('typeDi', {
-    typeDi_id: {
+    type_di_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -14,6 +14,6 @@ const TypeDi = db.define('typeDi', {
     actived: {
         type: Sequelize.BOOLEAN
     }
-}, { tableName: 'typeDi' })
+}, { tableName: 'type_di' })
 
 export default TypeDi

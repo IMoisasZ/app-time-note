@@ -3,7 +3,6 @@ import DiService from '../services/di.service.js'
 async function createDi(req, res, next) {
     try {
         const di = req.body
-        console.log(di);
         res.send(await DiService.createDi(di))
     } catch (error) {
         next(error)

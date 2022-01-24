@@ -29,16 +29,16 @@ create table client (
     updatedAt datetime
 );
 
-create table statusDi (
-	statusDi_id int primary key auto_increment,
+create table status_di (
+	status_di_id int primary key auto_increment,
     status varchar(15) not null,
     actived boolean default true,
     createdAt datetime,
     updatedAt datetime
 );
 
-create table typeDi (
-	typeDi_id int primary key auto_increment,
+create table type_di (
+	type_di_id int primary key auto_increment,
     name varchar(10) not null,
     actived boolean default true,
     createdAt datetime,
@@ -62,14 +62,15 @@ create table di (
     deadline date,
     progress varchar(7),
     update_date date,
-    typeDi_id int not null,
-    foreign key (typeDi_id) references typeDi(typeDi_id),
-    statusDi_id int not null,
-    foreign key (statusDi_id) references statusDi(statusDi_id),
+    type_di_id int not null,
+    foreign key (type_di_id) references type_di(type_di_id),
+    status_di_id int not null,
+    foreign key (status_di_id) references status_di(status_di_id),
     delivery date,
     createdAt datetime,
     updatedAt datetime
 );
+
 /*
 	create table di_setor (
 	di_setor_id int auto_increment primary key,
@@ -171,6 +172,8 @@ create table expedient (
 
 create table project_note (
 	note_id int primary key auto_increment,
+    /*user_id int not null,
+    foreign key (user_id) references user(user_id),*/
     date date not null,
     code_reason_id int not null,
     foreign key(code_reason_id) references code_reason(code_reason_id),
@@ -195,4 +198,5 @@ create table project_note (
     updatedAt datetime
 );
 
+drop table project_note;
 

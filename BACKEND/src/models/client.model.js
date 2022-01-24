@@ -17,3 +17,4 @@ const Client = db.define('client', {
 }, { tableName: 'client' })
 
 export default Client
+

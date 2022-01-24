@@ -28,7 +28,8 @@ async function getAllDi(){
         return await DiModel.findAll({
             include: [
                 {
-                    model: ClientModel
+                    model: ClientModel,
+                    as: 'clients',
                 }
             ]
         })
@@ -42,7 +43,9 @@ async function getDi(di_id){
         return await DiModel.findByPk(di_id, {
             include: [
                 {
-                    model: ClientModel
+                    model: ClientModel,
+                    as: 'clients'
+
                 }
             ]
         })

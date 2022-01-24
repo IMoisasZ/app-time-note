@@ -5,7 +5,7 @@ async function createTypeDi(typeDi){
     try {
         const newTypeDi = await TypeDiModel.create(typeDi)
         console.log(newTypeDi);
-        return await getTypeDi(newTypeDi.typeDi_id)
+        return await getTypeDi(newTypeDi.type_di_id)
     } catch (error) {
         throw error
     }
@@ -15,10 +15,10 @@ async function updateTypeDi(typeDi){
     try {
         await TypeDiModel.update(typeDi, {
             where: {
-                typeDi_id: typeDi.typeDi_id
+                type_di_id: typeDi.type_di_id
             }
         })
-        return await getTypeDi(typeDi.typeDi_id)
+        return await getTypeDi(typeDi.type_di_id)
     } catch (error) {
         throw error
     }
@@ -32,9 +32,9 @@ async function getAllTypeDi(){
     }
 }
 
-async function getTypeDi(typeDi_id){
+async function getTypeDi(type_di_id){
     try {
-        return await TypeDiModel.findByPk(typeDi_id)
+        return await TypeDiModel.findByPk(type_di_id)
     } catch (error) {
         throw error
     }

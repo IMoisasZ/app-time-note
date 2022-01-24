@@ -50,3 +50,101 @@
 2022-01-21T20:47:20.028Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_1` FOREIGN KEY (`code_reason_id`) REFERENCES `code_reason` (`code_reason_id`))
 2022-01-21T20:48:15.364Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`code_reason`, CONSTRAINT `code_reason_ibfk_1` FOREIGN KEY (`type_reason_id`) REFERENCES `type_reason` (`type_reason_id`))
 2022-01-21T20:58:58.110Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`place_work`, CONSTRAINT `place_work_ibfk_1` FOREIGN KEY (`sector_id`) REFERENCES `sector` (`sector_id`))
+2022-01-24T12:12:22.577Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:13:26.753Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:14:53.412Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:15:25.874Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:15:37.161Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:15:57.160Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:16:08.849Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:16:21.378Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:18:16.574Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`di`, CONSTRAINT `di_ibfk_1` FOREIGN KEY (`client_id`) REFERENCES `client` (`client_id`))
+2022-01-24T12:19:29.322Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`di`, CONSTRAINT `di_ibfk_3` FOREIGN KEY (`statusDi_id`) REFERENCES `statusdi` (`statusDi_id`))
+2022-01-24T12:20:31.463Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:26:25.441Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:30:33.377Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:30:57.227Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:30:59.145Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_1` FOREIGN KEY (`code_reason_id`) REFERENCES `code_reason` (`code_reason_id`))
+2022-01-24T12:31:01.937Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_1` FOREIGN KEY (`code_reason_id`) REFERENCES `code_reason` (`code_reason_id`))
+2022-01-24T12:36:09.070Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:50:46.023Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:51:49.247Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:51:56.316Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:52:08.552Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:52:17.095Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:52:25.648Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:52:35.311Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:52:46.422Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:52:59.976Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:53:34.859Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T12:55:40.581Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T13:24:34.058Z [injetaq-log] error GET  - client is associated to di using an alias. You've included an alias (di), but it does not match the alias(es) defined in your association (client).
+2022-01-24T13:26:44.117Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T13:32:36.474Z [injetaq-log] error GET  - client is associated to di using an alias. You've included an alias (client), but it does not match the alias(es) defined in your association (clients).
+2022-01-24T13:48:47.188Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T13:49:05.631Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T13:49:17.341Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T13:58:34.912Z [injetaq-log] error GET  - client_id is not defined
+2022-01-24T14:03:50.201Z [injetaq-log] error GET  - client is associated to di using an alias. You've included an alias (di), but it does not match the alias(es) defined in your association (dis).
+2022-01-24T14:05:05.082Z [injetaq-log] error GET  - client_id is not defined
+2022-01-24T14:05:24.269Z [injetaq-log] error GET  - WHERE parameter "client_id" has invalid "undefined" value
+2022-01-24T14:35:10.758Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_1` FOREIGN KEY (`code_reason_id`) REFERENCES `code_reason` (`code_reason_id`))
+2022-01-24T14:35:54.565Z [injetaq-log] error POST  - Validation error
+2022-01-24T14:36:16.631Z [injetaq-log] error POST  - Validation error
+2022-01-24T14:58:30.150Z [injetaq-log] error POST  - Validation error
+2022-01-24T14:59:52.863Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T15:00:37.232Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T15:01:01.697Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T15:01:35.253Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:01:42.296Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:01:47.915Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:01:53.141Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:01:57.042Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:02:48.811Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:02:58.032Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:03:27.456Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:03:45.603Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:06:36.021Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T15:07:20.294Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T15:10:17.167Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T15:10:51.714Z [injetaq-log] error GET  - client is not associated to di!
+2022-01-24T15:11:50.418Z [injetaq-log] error POST  - Validation error
+2022-01-24T15:45:53.619Z [injetaq-log] error POST  - Table 'injetaq.statusdi' doesn't exist
+2022-01-24T15:59:16.012Z [injetaq-log] error POST  - Unknown column 'typeDi_id' in 'field list'
+2022-01-24T15:59:43.464Z [injetaq-log] error POST  - notNull Violation: di.typeDi_id cannot be null,
+notNull Violation: di.statusDi_id cannot be null
+2022-01-24T16:04:24.491Z [injetaq-log] error POST  - Unknown column 'di.statusDi_id' in 'field list'
+2022-01-24T16:05:44.712Z [injetaq-log] error POST  - Validation error
+2022-01-24T16:10:43.842Z [injetaq-log] error POST  - Validation error
+2022-01-24T16:11:12.017Z [injetaq-log] error POST  - Validation error
+2022-01-24T16:36:52.698Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_1` FOREIGN KEY (`code_reason_id`) REFERENCES `code_reason` (`code_reason_id`))
+2022-01-24T16:37:37.021Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T16:39:02.774Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T16:39:27.676Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T16:39:53.959Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T16:40:20.918Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T16:40:54.962Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T16:42:26.042Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T16:44:08.796Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T20:40:25.357Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T20:41:07.489Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T20:42:30.075Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T20:42:58.347Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T20:43:29.113Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-24T20:44:03.070Z [injetaq-log] error POST  - notNull Violation: project_note.date cannot be null,
+notNull Violation: project_note.code_reason_id cannot be null,
+notNull Violation: project_note.description_reason_id cannot be null,
+notNull Violation: project_note.start cannot be null,
+notNull Violation: project_note.pause cannot be null,
+notNull Violation: project_note.finish cannot be null,
+notNull Violation: project_note.note_status cannot be null
+2022-01-24T20:44:33.132Z [injetaq-log] error POST  - notNull Violation: project_note.date cannot be null,
+notNull Violation: project_note.code_reason_id cannot be null,
+notNull Violation: project_note.description_reason_id cannot be null,
+notNull Violation: project_note.start cannot be null,
+notNull Violation: project_note.pause cannot be null,
+notNull Violation: project_note.finish cannot be null,
+notNull Violation: project_note.note_status cannot be null
+2022-01-24T20:45:01.721Z [injetaq-log] error POST  - notNull Violation: project_note.code_reason_id cannot be null,
+notNull Violation: project_note.description_reason_id cannot be null
+2022-01-24T20:47:02.297Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))

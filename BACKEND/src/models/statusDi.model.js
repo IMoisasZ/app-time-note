@@ -2,7 +2,7 @@ import Sequelize from "sequelize"
 import db from '../connectionDb/db.ConnectionDb.js'
 
 const StatusDi = db.define('statusDi', {
-    statusDi_id: {
+    status_di_id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -14,6 +14,6 @@ const StatusDi = db.define('statusDi', {
     actived: {
         type: Sequelize.BOOLEAN
     }
-}, { tableName: 'statusDi' })
+}, { tableName: 'status_di' })
 
 export default StatusDi

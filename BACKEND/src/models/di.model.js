@@ -67,11 +67,11 @@ const DI = db.define('di', {
         type: Sequelize.DATE,
         allowNull: true
     },
-    typeDi_id: {
+    type_di_id: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-    statusDi_id: {
+    status_di_id: {
         type: Sequelize.INTEGER,
         allowNull: false
     },
@@ -81,8 +81,10 @@ const DI = db.define('di', {
     }
 }, { tableName: 'di'})
 
-export default DI
 
-DI.belongsTo(ClientModel, { foreignKey: 'client_id' })
-DI.belongsTo(StatusDiModel, { foreignKey: 'statusDi_id' })
-DI.belongsTo(TypeDiModel, { foreignKey: 'typeDi_id' })
+    DI.belongsTo(ClientModel, { foreignKey: 'client_id', as: 'clients'})
+    DI.belongsTo(StatusDiModel, { foreignKey: 'status_di_id' })
+    DI.belongsTo(TypeDiModel, { foreignKey: 'type_di_id' })
+
+
+export default DI

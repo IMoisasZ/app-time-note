@@ -3,7 +3,7 @@ import StatusDiModel from '../models/statusDi.model.js'
 async function createStatusDi(statusDi){
     try {
         const newStatusDi = await StatusDiModel.create(statusDi)
-        return await getStatusDi(newStatusDi.statusDi_id)
+        return await getStatusDi(newStatusDi.status_di_id)
     } catch (error) {
         throw error
     }
@@ -13,10 +13,10 @@ async function updatedStatusDi(statusDi){
     try {
         await StatusDiModel.update(statusDi, {
             where: {
-                statusDi_id: statusDi.statusDi_id
+                status_di_id: statusDi.status_di_id
             }
         })
-        return await getStatusDi(statusDi.statusDi_id)
+        return await getStatusDi(statusDi.status_di_id)
     } catch (error) {
         throw error
     }
@@ -30,9 +30,9 @@ async function getAllStatusDi(){
     }
 }
 
-async function getStatusDi(statusDi_id){
+async function getStatusDi(status_di_id){
     try {
-        return await StatusDiModel.findByPk(statusDi_id)
+        return await StatusDiModel.findByPk(status_di_id)
     } catch (error) {
         throw error
     }
