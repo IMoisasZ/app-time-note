@@ -6,9 +6,8 @@ function ContainerLayOut({
 	maxWidth,
 	width,
 	margin = '0 auto',
-	display = 'flex',
 	justifyContent = 'center',
-	alignItems = 'center',
+	alignItems = 'flex-start',
 	textAlign = 'center',
 }) {
 	return (
@@ -18,7 +17,6 @@ function ContainerLayOut({
 				maxWidth,
 				width,
 				margin,
-				display,
 				justifyContent,
 				alignItems,
 				textAlign,

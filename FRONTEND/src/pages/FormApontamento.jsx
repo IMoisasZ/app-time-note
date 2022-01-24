@@ -11,6 +11,7 @@ import Message from '../components/layout/Message'
 
 import { ready } from '../api/apiHttp'
 import { create } from '../api/apiHttp'
+import codeReasonA from '../utils/validationCodeReason'
 
 function FormApontamento() {
 	const today = new Date()
@@ -326,8 +327,6 @@ function FormApontamento() {
 		setMessage([])
 	}
 
-	console.log(codeReasonId)
-
 	const submit = async (e) => {
 		e.preventDefault()
 		const note = {
@@ -346,9 +345,22 @@ function FormApontamento() {
 			notice,
 			note_status: 'INCLUÍDO',
 		}
+		let newNote = {}
+		switch (codeReasonId) {
+			case '1':
+				newNote = codeReasonA(codeReasonId, note)
+				console.log(newNote)
+				break
+			default:
+				newNote = note
+		}
+
 		try {
-			await create('projectNote', note)
+			await create('projectNote', newNote)
 			setMessage(['success', 'Apontamento incluído com sucesso'])
+			setTimeout(() => {
+				clear()
+			}, 3000)
 		} catch (error) {
 			setMessage(['error', error.response.data.erros])
 			console.log(note)
@@ -359,9 +371,7 @@ function FormApontamento() {
 			<Formulario
 				name='name form'
 				handleOnSubit={submit}
-				display='flex'
 				justifyContent='center'
-				alignItens='center'
 				textAlign='center'
 				width='100%'
 				margin='auto'

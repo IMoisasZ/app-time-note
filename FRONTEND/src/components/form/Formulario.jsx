@@ -6,7 +6,6 @@ function Formulario({
 	children,
 	display = 'flex',
 	justifyContent = 'center',
-	alignItens = 'center',
 	textAlign = 'center',
 	width = '80%',
 	margin = '0 auto',
@@ -20,9 +19,7 @@ function Formulario({
 			name={name}
 			onSubmit={handleOnSubit}
 			style={{
-				display,
 				justifyContent,
-				alignItens,
 				textAlign,
 				width,
 				margin,
@@ -32,6 +29,7 @@ function Formulario({
 				backgroundColor,
 				color: 'white',
 				fontWeight: 'bold',
+				display,
 			}}
 		>
 			<Form.Group className='vw-100'>{children}</Form.Group>
