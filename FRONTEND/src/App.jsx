@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer'
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Apontamento from './pages/Apontamento'
+import Apontamentos from './pages/Apontamentos'
 
 function App() {
 	return (
@@ -14,6 +15,7 @@ function App() {
 				<Route path='/' element={<Home />} />
 				<Route path='/login' element={<Login />} />
 				<Route path='/apontamento' element={<Apontamento />} />
+				<Route path='/lista_apontamentos' element={<Apontamentos />} />
 			</Routes>
 			<Footer />
 		</Router>

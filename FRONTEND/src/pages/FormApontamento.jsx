@@ -11,7 +11,7 @@ import Message from '../components/layout/Message'
 
 import { ready } from '../api/apiHttp'
 import { create } from '../api/apiHttp'
-import codeReasonA from '../utils/validationCodeReason'
+import validationNote from '../utils/validationCodeReason'
 
 function FormApontamento() {
 	const today = new Date()
@@ -137,33 +137,61 @@ function FormApontamento() {
 	useEffect(() => {
 		const allOperations = async () => {
 			const options = await ready('operation')
-			const newOptions = []
-			options.map(({ operation_id, operation }) => {
-				return newOptions.push({
-					id: operation_id,
-					name: operation,
-				})
-			})
-			setOperationOptions(newOptions)
+			let newOptions = []
+			switch (codeReasonId) {
+				case '1':
+					newOptions.push({
+						id: '6',
+						name: 'AUXILIO',
+					})
+					setOperationOptions(newOptions)
+					break
+				default:
+					options.map(({ operation_id, operation }) => {
+						if (operation_id !== 6) {
+							return newOptions.push({
+								id: operation_id,
+								name: operation,
+							})
+						}
+						return true
+					})
+					setOperationOptions(newOptions)
+			}
 		}
 		allOperations()
-	}, [])
+	}, [codeReasonId])
 
 	// expedient
 	useEffect(() => {
 		const allExpedient = async () => {
 			const options = await ready('expedient')
-			const newOptions = []
-			options.map(({ expedient_id, expedient }) => {
-				return newOptions.push({
-					id: expedient_id,
-					name: expedient,
-				})
-			})
-			setExpedientOptions(newOptions)
+			let newOptions = []
+			switch (codeReasonId) {
+				case '10':
+					newOptions.push({
+						id: '3',
+						name: 'AUSENTE',
+					})
+					setExpedientOptions(newOptions)
+					break
+
+				default:
+					options.map(({ expedient_id, expedient }) => {
+						if (expedient_id !== 3) {
+							return newOptions.push({
+								id: expedient_id,
+								name: expedient,
+							})
+						}
+						return true
+					})
+					setExpedientOptions(newOptions)
+					break
+			}
 		}
 		allExpedient()
-	}, [])
+	}, [codeReasonId])
 
 	// total
 	useEffect(() => {
@@ -185,7 +213,7 @@ function FormApontamento() {
 			setTotal(totalGeral)
 		}
 		handleTotal()
-	}, [totalPrior])
+	}, [totalPrior, start, pause, finish])
 
 	const handleDate = (e) => {
 		setDate(e.currentTarget.value)
@@ -295,7 +323,6 @@ function FormApontamento() {
 					setDisablePlaceWork(true)
 					setDisabledOperation(true)
 					setDisableExpedient(false)
-					expedientId(3)
 					break
 				default:
 					setDisableDescriptionReasonId(true)
@@ -345,15 +372,7 @@ function FormApontamento() {
 			notice,
 			note_status: 'INCLUÍDO',
 		}
-		let newNote = {}
-		switch (codeReasonId) {
-			case '1':
-				newNote = codeReasonA(codeReasonId, note)
-				console.log(newNote)
-				break
-			default:
-				newNote = note
-		}
+		let newNote = validationNote(codeReasonId, note)
 
 		try {
 			await create('projectNote', newNote)
@@ -362,8 +381,8 @@ function FormApontamento() {
 				clear()
 			}, 3000)
 		} catch (error) {
-			setMessage(['error', error.response.data.erros])
-			console.log(note)
+			setMessage(['error', error.response.data.msg])
+			console.log({ error })
 		}
 	}
 	return (
