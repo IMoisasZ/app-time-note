@@ -6,6 +6,7 @@ import DIModel from '../models/di.model.js'
 import PlaceWorkModel from '../models/placeWork.model.js'
 import OperationModel from '../models/operation.model.js'
 import ExpedientModel from '../models/expedient.model.js'
+import ClientModel from '../models/client.model.js'
 
 
 async function createProjectNote(projectNote){
@@ -32,7 +33,7 @@ async function updateProjectNote(projectNote){
 
 async function getAllProjectNote(){
     try {
-        return await ProjectNoteModel.findAll({
+        const notes =  await ProjectNoteModel.findAll({
             include: [
                 {
                     model: CodeReasonModel,
@@ -46,7 +47,13 @@ async function getAllProjectNote(){
                     model: DescriptionReasonModel
                 },
                 {
-                    model: DIModel
+                    model: DIModel,
+                    include: [
+                        {
+                            model: ClientModel,
+                            as: 'clients'
+                        }
+                    ]
                 },
                 {
                     model: PlaceWorkModel
@@ -57,8 +64,11 @@ async function getAllProjectNote(){
                 {
                     model: ExpedientModel
                 }
-            ]
+            ],
+            limit: 12,
+            offset: 2,
         })
+        return await notes
     } catch (error) {
         throw error
     }

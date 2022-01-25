@@ -1,7 +1,18 @@
 import ProjectNoteRepository from '../repositories/projectNote.repository.js'
+import validation from '../utils/validation.utils.js'
 
 async function createProjectNote(projectNote){
-    return ProjectNoteRepository.createProjectNote(projectNote)
+    try {
+        const message = validation(projectNote)
+        if(message) {
+            return message
+        }
+    
+        return ProjectNoteRepository.createProjectNote(projectNote)
+    } catch (error) {
+        throw error    
+    }
+
 }
 
 async function updateProjectNote(projectNote) {

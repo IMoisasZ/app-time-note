@@ -148,3 +148,66 @@ notNull Violation: project_note.note_status cannot be null
 2022-01-24T20:45:01.721Z [injetaq-log] error POST  - notNull Violation: project_note.code_reason_id cannot be null,
 notNull Violation: project_note.description_reason_id cannot be null
 2022-01-24T20:47:02.297Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-25T10:29:55.842Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_1` FOREIGN KEY (`code_reason_id`) REFERENCES `code_reason` (`code_reason_id`))
+2022-01-25T10:30:53.621Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_1` FOREIGN KEY (`code_reason_id`) REFERENCES `code_reason` (`code_reason_id`))
+2022-01-25T10:31:23.625Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_1` FOREIGN KEY (`code_reason_id`) REFERENCES `code_reason` (`code_reason_id`))
+2022-01-25T10:55:13.378Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_1` FOREIGN KEY (`code_reason_id`) REFERENCES `code_reason` (`code_reason_id`))
+2022-01-25T12:49:13.019Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T12:50:24.962Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T12:50:30.618Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T12:51:18.368Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T12:51:29.825Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T12:51:52.095Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T12:51:56.964Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T12:52:03.781Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T12:52:15.778Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T12:52:23.711Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T12:52:28.923Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:08:55.850Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:08:59.066Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T13:39:42.451Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:43:08.072Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:43:25.765Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:44:21.564Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:45:04.416Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:45:26.982Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:45:40.658Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:46:01.284Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:46:17.792Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:46:50.835Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_5` FOREIGN KEY (`operation_id`) REFERENCES `operation` (`operation_id`))
+2022-01-25T13:48:36.512Z [injetaq-log] error POST  - [object Object]
+2022-01-25T13:49:21.388Z [injetaq-log] error POST  - [object Object]
+2022-01-25T13:49:27.665Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T13:49:47.025Z [injetaq-log] error POST  - [object Object]
+2022-01-25T13:49:56.151Z [injetaq-log] error POST  - [object Object]
+2022-01-25T13:50:47.596Z [injetaq-log] error POST  - [object Object]
+2022-01-25T13:51:42.147Z [injetaq-log] error POST  - [object Object]
+2022-01-25T13:55:43.359Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:00:50.209Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:01:09.868Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:01:28.607Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:01:44.173Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:02:27.677Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:03:56.333Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:05:35.210Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:06:21.998Z [injetaq-log] error POST  - undefined
+2022-01-25T14:10:21.539Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:11:06.611Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:12:00.823Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:14:31.503Z [injetaq-log] error POST  - [object Object]
+2022-01-25T14:16:25.678Z [injetaq-log] error POST  - data.split is not a function
+2022-01-25T14:17:01.842Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:17:36.162Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:18:34.052Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:20:26.138Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:21:24.138Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:21:29.508Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:34:03.544Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:34:05.324Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:34:05.884Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:34:06.307Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:34:06.707Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T14:34:07.092Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-25T15:15:38.839Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_6` FOREIGN KEY (`expedient_id`) REFERENCES `expedient` (`expedient_id`))
+2022-01-25T16:30:26.115Z [injetaq-log] error GET  - client is associated to di using an alias. You must use the 'as' keyword to specify the alias within your include statement.
+2022-01-25T17:24:47.900Z [injetaq-log] error GET  - Cannot access 'notes' before initialization
