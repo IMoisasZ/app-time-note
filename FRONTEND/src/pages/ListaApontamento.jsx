@@ -6,38 +6,68 @@ import { ready } from '../api/apiHttp'
 
 function ListaApontamento() {
 	const [listaDados, setListaDados] = useState([])
+	const [page, setPage] = useState(1)
+	const [totalPages, setTotalPages] = useState(0)
+	const [numberPages, setNumberPages] = useState([])
+	const [limit, setLimit] = useState(1)
+
 	useEffect(() => {
 		const allNotes = async () => {
-			const notes = await ready('projectNote')
-			setListaDados(notes)
+			const notes = await ready(`projectNote?page=${page}&limit=${limit}`)
+			let newNotes = []
+			notes.map((note) => {
+				const newStart = note.start.split(':')
+				const newPause = note.pause.split(':')
+				const newFinish = note.finish.split(':')
+				const int =
+					parseFloat(newFinish[0]) -
+					parseFloat(newStart[0]) -
+					parseFloat(newPause[0])
+				const rest =
+					(parseFloat(newFinish[1]) -
+						parseFloat(newStart[1]) -
+						parseFloat(newPause[1])) /
+					60
+				const total = int + rest
+				note.total = total
+				return newNotes.push(note)
+			})
+			setListaDados(newNotes)
+			setTotalPages(Math.ceil(notes.length / limit))
 		}
+		const handleNumberPages = () => {
+			let numbers = []
+			for (let i = 1; i <= totalPages; i++) {
+				numbers.push([i])
+			}
+			setNumberPages(numbers)
+		}
+		handleNumberPages()
 		allNotes()
-	}, [])
+	}, [limit, totalPages, page])
 
-	useEffect(() => {
-		let total = 0
-		listaDados.map(({ start, pause, finish }) => {
-			let int =
-				parseInt(finish.split(':')[0]) -
-				parseInt(start.split(':')[0]) -
-				parseInt(pause.split(':')[0])
-			let rest =
-				(parseInt(finish.split(':')[1]) -
-					parseInt(start.split(':')[1]) -
-					parseInt(pause.split(':')[1])) /
-				60
+	console.log(page)
+	const handlePreviusPage = () => {
+		parseInt(page) > 1 && setPage(parseInt(page) - 1)
+	}
 
-			total = int + rest
-			setListaDados({ ...listaDados, total: total })
-			return true
-		})
-	}, [])
+	const handleNextPage = () => {
+		parseInt(page) === parseInt(totalPages)
+			? setPage(parseInt(totalPages))
+			: setPage(parseInt(page) + 1)
+	}
+	console.log(page)
 
-	console.log(listaDados)
 	return (
 		<>
 			<h2>Lista Apontamentos</h2>
-			<Table striped bordered hover variant='dark'>
+			<Table
+				striped
+				bordered
+				hover
+				variant='dark'
+				style={{ minHeight: '38em' }}
+			>
 				<thead>
 					<tr>
 						<th>ID</th>
@@ -58,7 +88,7 @@ function ListaApontamento() {
 				</thead>
 				<tbody>
 					{listaDados.map((note) => (
-						<tr>
+						<tr key={note.note_id}>
 							<td>{note.note_id}</td>
 							<td>{note.date}</td>
 							<td>{note.codeReason.code_reason}</td>
@@ -91,23 +121,19 @@ function ListaApontamento() {
 					))}
 				</tbody>
 			</Table>
-			<div>
+			<div style={{ display: 'flex', justifyContent: 'center' }}>
 				<Pagination>
-					<Pagination.First />
-					<Pagination.Prev />
-					<Pagination.Item>{1}</Pagination.Item>
-					<Pagination.Ellipsis />
-
-					<Pagination.Item>{10}</Pagination.Item>
-					<Pagination.Item>{11}</Pagination.Item>
-					<Pagination.Item active>{12}</Pagination.Item>
-					<Pagination.Item>{13}</Pagination.Item>
-					<Pagination.Item disabled>{14}</Pagination.Item>
-
-					<Pagination.Ellipsis />
-					<Pagination.Item>{20}</Pagination.Item>
-					<Pagination.Next />
-					<Pagination.Last />
+					<Pagination.First page={1} />
+					<Pagination.Prev onClick={() => handlePreviusPage()} />
+					{numberPages.map((pg) => {
+						return (
+							<Pagination.Item onClick={() => setPage(pg)} key={pg}>
+								{pg}
+							</Pagination.Item>
+						)
+					})}
+					<Pagination.Next onClick={() => handleNextPage()} />
+					<Pagination.Last page={totalPages} />
 				</Pagination>
 			</div>
 		</>
