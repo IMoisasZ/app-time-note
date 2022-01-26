@@ -31,9 +31,10 @@ async function updateProjectNote(projectNote){
     }
 }
 
-async function getAllProjectNote(){
+async function getAllProjectNote(page, limit){
+    console.log(limit);
     try {
-        const notes =  await ProjectNoteModel.findAll({
+        let {count: size, rows: notes} = await ProjectNoteModel.findAndCountAll({
             include: [
                 {
                     model: CodeReasonModel,
@@ -65,9 +66,12 @@ async function getAllProjectNote(){
                     model: ExpedientModel
                 }
             ],
-            limit: 12,
-            offset: 2,
+            
+                limit: limit,
+            
         })
+        console.log(notes);
+
         return await notes
     } catch (error) {
         throw error

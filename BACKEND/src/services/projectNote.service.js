@@ -19,8 +19,8 @@ async function updateProjectNote(projectNote) {
     return await ProjectNoteRepository.updateProjectNote(projectNote)
 }
 
-async function getAllProjectNote(){
-    return await ProjectNoteRepository.getAllProjectNote()
+async function getAllProjectNote(page, limit){
+    return await ProjectNoteRepository.getAllProjectNote(page, limit)
 }
 
 async function getProjectNote(note_id){

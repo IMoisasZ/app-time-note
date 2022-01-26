@@ -52,15 +52,15 @@ const ProjectNote = db.define(
 			allowNull: true,
 		},
 		start: {
-			type: Sequelize.DATE,
+			type: Sequelize.TIME,
 			allowNull: false,
 		},
 		pause: {
-			type: Sequelize.DATE,
+			type: Sequelize.TIME,
 			allowNull: false,
 		},
 		finish: {
-			type: Sequelize.DATE,
+			type: Sequelize.TIME,
 			allowNull: false,
 		},
 		notice: {

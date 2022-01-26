@@ -38,7 +38,9 @@ async function updateProjectNote(req, res, next){
 
 async function getAllProjectNote(req, res, next){
     try {
-        res.send(await ProjectNoteService.getAllProjectNote())
+        const {page, limit} = req.query
+
+        res.send(await ProjectNoteService.getAllProjectNote(page, limit))
     } catch (error) {
         next(error)
     }
