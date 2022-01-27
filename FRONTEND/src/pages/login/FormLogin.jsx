@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 
 import { Badge } from 'react-bootstrap'
 
-import Formulario from '../components/form/Formulario'
-import Input from '../components/form/Input'
-import Button from '../components/form/Button'
+import Formulario from '../../components/form/Formulario'
+import Input from '../../components/form/Input'
+import Button from '../../components/form/Button'
 
 function FormLogin() {
 	const [user, setUser] = useState('')

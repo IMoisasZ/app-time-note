@@ -1,0 +1,19 @@
+.container_select_pagination {
+    display: flex;
+    justify-content: center;
+    margin-left: 1em;
+}
+
+.container_select_pagination select {
+    text-align: center;
+    width: 4em;
+    border: 0.5px solid gray;
+    border-radius: 0.5em;
+    color: blue;
+    font-weight: 600;
+    transition: 1s;
+}
+
+.container_select_pagination select:hover {
+    background-color: gray;
+}

@@ -1,0 +1,13 @@
+.button{
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 0.5em;
+    background-color: white;
+    transition: 1s;
+}
+
+.button_img {
+    font-size: 1.2em;
+    color: blue;
+    margin: 0.2em auto;
+}

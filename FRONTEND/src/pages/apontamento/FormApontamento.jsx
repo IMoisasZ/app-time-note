@@ -2,16 +2,16 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import { Row, Col } from 'react-bootstrap'
-import Formulario from '../components/form/Formulario'
-import Input from '../components/form/Input'
-import Select from '../components/form/Select'
-import TextArea from '../components/form/TextArea'
-import Button from '../components/form/Button'
-import Message from '../components/layout/Message'
+import Formulario from '../../components/form/Formulario'
+import Input from '../../components/form/Input'
+import Select from '../../components/form/Select'
+import TextArea from '../../components/form/TextArea'
+import Button from '../../components/form/Button'
+import Message from '../../components/layout/Message'
 
-import { ready } from '../api/apiHttp'
-import { create } from '../api/apiHttp'
-import validationNote from '../utils/validationCodeReason'
+import { ready } from '../../api/apiHttp'
+import { create } from '../../api/apiHttp'
+import validationNote from '../../utils/validationCodeReason'
 
 function FormApontamento() {
 	const today = new Date()
@@ -210,7 +210,7 @@ function FormApontamento() {
 					parseFloat(newPause[1])) /
 				60
 			const totalGeral = int + rest
-			setTotal(totalGeral)
+			setTotal(totalGeral.toFixed(2))
 		}
 		handleTotal()
 	}, [totalPrior, start, pause, finish])
@@ -356,25 +356,25 @@ function FormApontamento() {
 
 	const submit = async (e) => {
 		e.preventDefault()
-		const note = {
-			date: date,
-			code_reason_id: codeReasonId,
-			description_reason_id: descriptionReasonId,
-			di_id: diId,
-			os_id: osId,
-			task_description: descriptionTask,
-			placeWork_id: placeWorkId,
-			operation_id: operationId,
-			expedient_id: expedientId,
-			start,
-			pause,
-			finish,
-			notice,
-			note_status: 'INCLUÍDO',
-		}
-		let newNote = validationNote(codeReasonId, note)
-
 		try {
+			const note = {
+				date: date,
+				code_reason_id: codeReasonId,
+				description_reason_id: descriptionReasonId,
+				di_id: diId,
+				os_id: osId,
+				task_description: descriptionTask,
+				placeWork_id: placeWorkId,
+				operation_id: operationId,
+				expedient_id: expedientId,
+				start,
+				pause,
+				finish,
+				notice,
+				note_status: 'INCLUÍDO',
+			}
+			let newNote = validationNote(codeReasonId, note)
+
 			await create('projectNote', newNote)
 			setMessage(['success', 'Apontamento incluído com sucesso'])
 			setTimeout(() => {
@@ -593,12 +593,14 @@ function FormApontamento() {
 					</Col>
 				</Row>
 				<div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-					<Button variant='warning' handleOnClick={clear}>
+					<Button type='button' variant='warning' handleOnClick={clear}>
 						Limpar campos
 					</Button>
-					<Button handleOnClick={submit}>Incluir</Button>
+					<Button type='submit'>Incluir</Button>
 					<Link to='/lista_apontamentos'>
-						<Button variant='secondary'>Lista apontamentos</Button>
+						<Button type='button' variant='secondary'>
+							Lista apontamentos
+						</Button>
 					</Link>
 				</div>
 				{message && <Message type={message[0]} message={message[1]} />}

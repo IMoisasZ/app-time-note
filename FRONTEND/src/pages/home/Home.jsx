@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
-import Container from '../components/layout/Container'
-import Button from '../components/form/Button'
+import Container from '../../components/layout/Container'
+import Button from '../../components/form/Button'
 
 function Home() {
 	return (
