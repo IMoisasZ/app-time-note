@@ -27,9 +27,14 @@ async function getProjectNote(note_id){
     return await ProjectNoteRepository.getProjectNote(note_id)
 }
 
+async function getProjectNoteByPeriod(period){
+    return await ProjectNoteRepository.getProjectNoteByPeriod(period)
+}
+
 export default {
     createProjectNote,
     updateProjectNote,
     getAllProjectNote,
-    getProjectNote
+    getProjectNote,
+    getProjectNoteByPeriod
 }

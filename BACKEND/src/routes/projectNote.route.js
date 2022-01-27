@@ -7,5 +7,6 @@ route.post('/', ProjectNoteController.createProjectNote)
 route.put('/', ProjectNoteController.updateProjectNote)
 route.get('/', ProjectNoteController.getAllProjectNote)
 route.get('/:note_id', ProjectNoteController.getProjectNote)
+route.get('/period/?period', ProjectNoteController.getProjectNoteByPeriod)
 
 export default route

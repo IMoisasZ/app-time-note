@@ -71,6 +71,10 @@ const ProjectNote = db.define(
 			type: Sequelize.STRING,
 			allowNull: false,
 		},
+		period: {
+			type: Sequelize.STRING,
+			allowNull: false
+		}
 	},
 	{ tableName: 'project_note' },
 )

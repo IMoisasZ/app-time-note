@@ -270,3 +270,10 @@ notNull Violation: project_note.description_reason_id cannot be null
 2022-01-26T20:07:04.957Z [injetaq-log] error GET  - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''1'' at line 1
 2022-01-26T20:07:34.800Z [injetaq-log] error GET  - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''1'' at line 1
 2022-01-26T20:08:19.398Z [injetaq-log] error GET  - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''1'' at line 1
+2022-01-27T15:56:52.973Z [injetaq-log] error POST  - Cannot add or update a child row: a foreign key constraint fails (`injetaq`.`project_note`, CONSTRAINT `project_note_ibfk_3` FOREIGN KEY (`di_id`) REFERENCES `di` (`di_id`))
+2022-01-27T17:08:10.157Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-27T17:08:13.657Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-27T17:08:15.569Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-27T17:08:22.795Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-27T17:13:30.535Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client
+2022-01-27T17:13:37.636Z [injetaq-log] error POST  - Cannot set headers after they are sent to the client

@@ -11,9 +11,8 @@ async function createProjectNote(req, res, next) {
         if(!projectNote.pause) res.status(400).json({msg: 'O intervalo é obrigatório!'})
         if(!projectNote.finish) res.status(400).json({msg: 'O termino é obrigatório!'})
         const data = await ProjectNoteService.createProjectNote(projectNote)
-        console.log(data);
         if(data.msg) res.status(400).send(data)
-        res.send(await ProjectNoteService.createProjectNote(projectNote))
+        res.send(data)
     } catch (error) {
         next(error)
     }
@@ -53,10 +52,20 @@ async function getProjectNote(req, res, next){
         next(error)
     }
 }
+async function getProjectNoteByPeriod(req, res, next) {
+    try {
+        const {period} = req.query
+        console.log(req.query);
+        res.send(await ProjectNoteService.getProjectNoteByPeriod(period))
+    } catch (error) {
+        next(error)
+    }
+}
 
 export default {
     createProjectNote,
     updateProjectNote,
     getAllProjectNote,
-    getProjectNote
+    getProjectNote,
+    getProjectNoteByPeriod,
 }

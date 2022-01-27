@@ -31,10 +31,9 @@ async function updateProjectNote(projectNote){
     }
 }
 
-async function getAllProjectNote(page, limit){
-    console.log(limit);
+async function getAllProjectNote(){
     try {
-        let {count: size, rows: notes} = await ProjectNoteModel.findAndCountAll({
+        return await ProjectNoteModel.findAll({
             include: [
                 {
                     model: CodeReasonModel,
@@ -66,13 +65,7 @@ async function getAllProjectNote(page, limit){
                     model: ExpedientModel
                 }
             ],
-            
-                limit: limit,
-            
         })
-        console.log(notes);
-
-        return await notes
     } catch (error) {
         throw error
     }
@@ -113,9 +106,23 @@ async function getProjectNote(note_id){
     }
 }
 
+async function getProjectNoteByPeriod(period){
+    console.log(period);
+    try {
+        return await ProjectNoteModel.findAll({
+            where: {
+                period
+            }
+        })
+    } catch (error) {
+        throw error
+    }
+}
+
 export default {
     createProjectNote,
     updateProjectNote,
     getAllProjectNote,
-    getProjectNote
+    getProjectNote,
+    getProjectNoteByPeriod
 }
